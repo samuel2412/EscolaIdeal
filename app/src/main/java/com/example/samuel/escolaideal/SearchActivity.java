@@ -1,12 +1,11 @@
 package com.example.samuel.escolaideal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.content.Intent;
 
 
 public class SearchActivity extends Activity {
@@ -32,13 +31,6 @@ public class SearchActivity extends Activity {
 	    b.putString("key1", sigla);
         i.putExtras(b);
          startActivity(i);
-        /*Resposta re = new Resposta();
-        String response = re.resposta(sigla);
-
-        TextView responseView =  (TextView)findViewById(R.id.responseView);
-
-        responseView.setText(response);
-        */
     }
 
 }
