@@ -1,7 +1,5 @@
 package com.example.samuel.escolaideal;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,23 +16,22 @@ public class Resposta {
 
         try {
             JSONArray obj = new JSONArray(resposta(sigla));
-            JSONArray outroArray = new JSONArray(obj.get(1));
-
-            for(int i=0;i<outroArray.length();i++){
-                JSONObject escola = new JSONObject (outroArray.get(i));
-                Escola esc = new Escola();
-                while(escola.keys().hasNext()){
-                    String chave = escola.keys().next();
-                    esc.setValues(chave,escola.get(chave));
-                }
-
-                listaEscola.add(esc);
+            JSONArray aux = obj.getJSONArray(1);
+            //Log.e("AUX",""+aux.length());
+            for(int i=0;i<aux.length();i++){
+                JSONObject escola = aux.getJSONObject(i);
+                Escola esc = new Escola(escola.getInt("anoCenso"),escola.getInt("cod"),escola.getInt("codCidade"),
+                        escola.getInt("situacaoFuncionamento"),escola.getString("nome"),escola.getString("cidade"),
+                        escola.getString("estado"),escola.getString("regiao"),
+                        escola.getString("dependenciaAdministrativa"),escola.getString("situacaoFuncionamentoTxt"),
+                        escola.getString("dependenciaAdministrativaTxt"), escola.getDouble("idebAI"),
+                        escola.getDouble("idebAF"), escola.getDouble("enemMediaGeral"));
+               listaEscola.add(esc);
             }
 
-
-
         }catch (Exception e){
-            Log.e("erro",e.getMessage());
+           e.printStackTrace();
+            // Log.e("erro",e.getMessage());
         }
         return listaEscola;
     }
