@@ -2,39 +2,30 @@
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-
-        tools:context="com.example.samuel.escolaideal.SearchActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.samuel.escolaideal.SearchActivity">
 
         <EditText
             android:id="@+id/siglaText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:hint="Sigla do estado"
-            android:inputType="text" />
+            android:inputType="text"
+            android:layout_marginTop="100px" />
 
         <Button
             android:id="@+id/queryButton"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="198dp"
-            android:layout_height="34dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/siglaText"
-            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:onClick="buscar"
             android:text="buscar" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="374dp"
-            android:layout_below="@+id/queryButton"
-            android:gravity="center">
-
-
-        </RelativeLayout>
     </RelativeLayout>
 
 

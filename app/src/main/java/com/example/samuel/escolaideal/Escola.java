@@ -42,12 +42,10 @@ public class Escola {
 
     @Override
     public String toString() {
-        return "Escola{" +
-                "anoCenso=" + anoCenso +
+        return  "anoCenso=" + anoCenso +
                 ", cod=" + cod +
                 ", codCidade=" + codCidade +
                 ", situacaoFuncionamento=" + situacaoFuncionamento +
-                ", nome='" + nome + '\'' +
                 ", cidade='" + cidade + '\'' +
                 ", estado='" + estado + '\'' +
                 ", regiao='" + regiao + '\'' +
@@ -57,7 +55,7 @@ public class Escola {
                 ", idebAI=" + idebAI +
                 ", idebAF=" + idebAF +
                 ", enemMediaGeral=" + enemMediaGeral +
-                '}';
+                "}\n";
     }
 
     public Escola(int anoCenso, int cod, int codCidade, int situacaoFuncionamento, int situacaoCenso, int codUf, int codMunicipio, int codDistrito, int tipoLocalizacao, int regulamentada, int salasExistentes, int salasUtilizadas, int televisores, int videoCassetes, int dvds, int parabolicas, int aparelhosSom, int datashows, int fax, int foto, int computadores, int computadoresAdm, int computadoresAlunos, int funcionarios, int copiadoras, int retroprojetores, int impressoras, int atividadeComplementar, int socioEconomico, String nome, String cidade, String estado, String regiao, String dependenciaAdministrativa, String situacaoFuncionamentoTxt, String dependenciaAdministrativaTxt, String inicioAno, String fimAno, String siglaUf, String nomeMunicipio, String nomeDistrito, String endereco, String latitude, String longitude, String nomeTitulo, String inicioAnoTxt, String fimAnoTxt, String tipoLocalizacaoTxt, String regulamentadaTxt, boolean energiaPublica, boolean energiaGerador, boolean energiaOutros, boolean energiaInexistente, boolean esgotoPublico, boolean esgotoFossa, boolean esgotoInexistente, boolean lixoColetaPeriodica, boolean lixoQueima, boolean lixoJogaOutraArea, boolean lixoRecicla, boolean lixoEnterra, boolean lixoOutros, boolean salaDiretoria, boolean salaProfessores, boolean laboratorioInformatica, boolean laboratorioCiencias, boolean atendimentoEspecial, boolean quadraCoberta, boolean quadraDescoberta, boolean cozinha, boolean biblioteca, boolean salaLeitura, boolean parqueInfantil, boolean bercario, boolean sanitarioForaPredio, boolean sanitarioDentroPredio, boolean sanitarioEducInfant, boolean sanitarioPNE, boolean dependenciasPNE, boolean secretaria, boolean banheiroChuveiro, boolean refeitorio, boolean despensa, boolean auditorio, boolean patioCoberto, boolean patioDescoberto, boolean areaVerde, boolean lavanderia, boolean internet, boolean bandaLarga, boolean ensinoRegular, boolean regCreche, boolean regPreescola, boolean regFundamental8, boolean regFundamental9, boolean regMedioMedio, boolean regMedioIntegrado, boolean regMedioNormal, boolean regMedioProfissional, boolean ensinoEspecial, boolean espCreche, boolean espPreescola, boolean espFundamental8, boolean espFundamental9, boolean espMedioMedio, boolean espMedioIntegrado, boolean espMedioNormal, boolean espMedioProfissional, boolean espEjaFundamental, boolean espEjaMedio, boolean ensinoEja, boolean ejaFundamental, boolean ejaMedio, boolean ejaProjovem, double idebAI, double idebAF, double enemMediaGeral, double enemMediaObjetiva, double formacaoDocente) {

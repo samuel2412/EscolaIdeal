@@ -24,9 +24,14 @@
 
         <!-- Activity Principal -->
         <activity
-            android:name=".SearchActivity"
-            android:label="@string/app_name" />
-        <activity android:name=".ResponseActivity" />
+        android:name=".SearchActivity"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"/>
+        <!-- Activity Response-->
+        <activity android:name=".ResponseActivity"
+            android:screenOrientation="portrait"/>
+
+
     </application>
 
 </manifest>
