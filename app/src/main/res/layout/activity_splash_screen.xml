@@ -8,18 +8,17 @@
         tools:context="com.example.samuel.escolaideal.SplashScreenActivity">
 
 
-    <ImageView
-        android:id="@+id/imgLogo"
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"/>
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:textSize="21dp"
-        android:textColor="#fff"
+        android:textColor="#ffffff"
         android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:text="Carregando..." />

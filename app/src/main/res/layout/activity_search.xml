@@ -1,31 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:layout_margin="20dp"
     tools:context="com.example.samuel.escolaideal.SearchActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout1"
+        android:weightSum="2"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Dependência Administrativa"
+        android:id="@+id/dependencia"
+        />
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/Spinner01"
+        android:layout_toRightOf="@id/dependencia"
 
-        <EditText
-            android:id="@+id/siglaText"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout2"
+        android:layout_below="@id/layout1"
+        android:layout_marginTop="10px"
+        android:weightSum="2"
+        android:orientation="horizontal">>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Tipo de Ensino"
+        android:id="@+id/tipoEnsino"
+        />
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/Spinner02"
+        android:layout_toRightOf="@id/tipoEnsino"
+
+        />
+      </LinearLayout>
+    <Switch
+        android:id="@+id/op1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/layout2"
+        android:text="Cantina"
+        android:layout_marginTop="10px"/>
+    <Switch
+        android:id="@+id/op2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/op1"
+        android:text="Quadra Coberta"
+        android:layout_marginTop="10px" />
+    <Switch
+        android:id="@+id/op3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/op2"
+        android:text="Acessibilidade"
+        android:layout_marginTop="10px"/>
+    <Switch
+        android:id="@+id/op4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/op3"
+        android:text="Laboratório de Informática"
+        android:layout_marginTop="10px"/>
+    <Switch
+        android:id="@+id/op5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/op4"
+        android:text="Laboratório de Ciências"
+        android:layout_marginTop="10px"/>
+
+            <!--android:layout_centerInParent="true"-->
+        <Button
+            android:id="@+id/buttonExpand"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_below="@id/op5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:hint="Sigla do estado"
-            android:inputType="text"
-            android:layout_marginTop="100px" />
+            android:clickable="true"
+            android:text="Exibir outros atributos"
+            android:onClick="itensMenu"
+            android:layout_marginTop="10px"/>
 
-        <Button
-            android:id="@+id/queryButton"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/expandedMenu"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:onClick="buscar"
-            android:text="buscar" />
+            android:layout_below="@id/buttonExpand"
+            android:orientation="vertical"
+            android:layout_marginTop="10px"
+            >
 
-    </RelativeLayout>
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Energia Pública"
+                android:id="@+id/energia"
+                android:layout_below="@id/buttonExpand"/>
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Água Filtrada"
+                android:id="@+id/agua"
+                android:layout_below="@id/energia"
+                android:layout_marginTop="10px"/>
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Pátio"
+                android:id="@+id/patio"
+                android:layout_below="@id/energia"
+                android:layout_marginTop="10px"/>
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Berçário"
+                android:id="@+id/bercario"
+                android:layout_below="@id/patio"
+                android:layout_marginTop="10px"/>
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Sala de Professores"
+                android:id="@+id/salaProfessores"
+                android:layout_below="@id/patio"
+                android:layout_marginTop="10px"/>
+
+        </LinearLayout>
+
+
+    <Button
+        android:id="@+id/queryButton"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/expandedMenu"
+        android:onClick="buscar"
+        android:text="buscar" />
+</RelativeLayout>
+
+</ScrollView>
 
 
