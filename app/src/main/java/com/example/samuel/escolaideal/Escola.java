@@ -4,8 +4,8 @@ public class Escola {
     private int anoCenso,cod, codCidade,situacaoFuncionamento,situacaoCenso,codUf,codMunicipio,codDistrito,tipoLocalizacao,
     regulamentada,salasExistentes,salasUtilizadas,televisores,videoCassetes,dvds,parabolicas,aparelhosSom,datashows,fax,
             foto,computadores,computadoresAdm,computadoresAlunos,funcionarios,
-    copiadoras,retroprojetores,impressoras,atividadeComplementar,socioEconomico;
-    private String nome,cidade,estado,regiao,dependenciaAdministrativa,situacaoFuncionamentoTxt,dependenciaAdministrativaTxt,
+    copiadoras,retroprojetores,impressoras,atividadeComplementar,socioEconomico,dependenciaAdministrativa;
+    private String nome,cidade,estado,regiao,situacaoFuncionamentoTxt,dependenciaAdministrativaTxt,
             inicioAno,fimAno,siglaUf,nomeMunicipio,nomeDistrito,endereco,latitude,longitude,nomeTitulo,
             inicioAnoTxt,fimAnoTxt,tipoLocalizacaoTxt,regulamentadaTxt;
     private boolean aguaCacimba,aguaFiltrada,aguaInexistente,aguaPocoArtesiano,aguaPublica,aguaRio,almoxarifado,energiaPublica,
@@ -17,13 +17,18 @@ public class Escola {
             alojamentoProfessor,areaVerde,lavanderia,internet,bandaLarga,alimentacao,aee,ensinoRegular,regCreche,regPreescola,
             regFundamental8,regFundamental9,regMedioMedio,regMedioIntegrado,regMedioNormal,regMedioProfissional,ensinoEspecial,
             espCreche,espPreescola,espFundamental8,espFundamental9,espMedioMedio,espMedioIntegrado,espMedioNormal,
-            espMedioProfissional,espEjaFundamental,espEjaMedio,ensinoEja,ejaFundamental,ejaMedio,ejaProjovem;
-        private double idebAI,idebAF,enemMediaGeral,enemMediaObjetiva,formacaoDocente;
+            espMedioProfissional,espEjaFundamental,espEjaMedio,ensinoEja,ejaFundamental,ejaMedio,ejaProjovem,ciclos,fimDeSemana
+            ,pedagogiaAlternancia;
+        private double idebAI,idebAF,enemMediaGeral,enemMediaObjetiva,formacaoDocente,enemPortugues,enemMatematica,enemHumanas
+                ,enemNaturais,enemRedacao;
 
     public Escola() {
     }
+    public Escola(int cod){
+        this.cod = cod;
+    }
 
-    public Escola(int anoCenso, int cod, int codCidade, int situacaoFuncionamento, String nome, String cidade, String estado, String regiao, String dependenciaAdministrativa, String situacaoFuncionamentoTxt, String dependenciaAdministrativaTxt, double idebAI, double idebAF, double enemMediaGeral) {
+    public Escola(int anoCenso, int cod, int codCidade, int situacaoFuncionamento, String nome, String cidade, String estado, String regiao, int dependenciaAdministrativa, String situacaoFuncionamentoTxt, String dependenciaAdministrativaTxt, double idebAI, double idebAF, double enemMediaGeral) {
         this.anoCenso = anoCenso;
         this.cod = cod;
         this.codCidade = codCidade;
@@ -40,144 +45,230 @@ public class Escola {
         this.enemMediaGeral = enemMediaGeral;
     }
 
-    @Override
-    public String toString() {
-        return  "anoCenso=" + anoCenso +
+    public String toStringBuscaAvancada() {
+        return "{" +
+                "anoCenso=" + anoCenso +
                 ", cod=" + cod +
                 ", codCidade=" + codCidade +
                 ", situacaoFuncionamento=" + situacaoFuncionamento +
+                ", dependenciaAdministrativa=" + dependenciaAdministrativa +
                 ", cidade='" + cidade + '\'' +
                 ", estado='" + estado + '\'' +
                 ", regiao='" + regiao + '\'' +
-                ", dependenciaAdministrativa='" + dependenciaAdministrativa + '\'' +
                 ", situacaoFuncionamentoTxt='" + situacaoFuncionamentoTxt + '\'' +
                 ", dependenciaAdministrativaTxt='" + dependenciaAdministrativaTxt + '\'' +
                 ", idebAI=" + idebAI +
                 ", idebAF=" + idebAF +
                 ", enemMediaGeral=" + enemMediaGeral +
-                "}\n";
+                '}';
     }
 
-    public Escola(int anoCenso, int cod, int codCidade, int situacaoFuncionamento, int situacaoCenso, int codUf, int codMunicipio, int codDistrito, int tipoLocalizacao, int regulamentada, int salasExistentes, int salasUtilizadas, int televisores, int videoCassetes, int dvds, int parabolicas, int aparelhosSom, int datashows, int fax, int foto, int computadores, int computadoresAdm, int computadoresAlunos, int funcionarios, int copiadoras, int retroprojetores, int impressoras, int atividadeComplementar, int socioEconomico, String nome, String cidade, String estado, String regiao, String dependenciaAdministrativa, String situacaoFuncionamentoTxt, String dependenciaAdministrativaTxt, String inicioAno, String fimAno, String siglaUf, String nomeMunicipio, String nomeDistrito, String endereco, String latitude, String longitude, String nomeTitulo, String inicioAnoTxt, String fimAnoTxt, String tipoLocalizacaoTxt, String regulamentadaTxt, boolean energiaPublica, boolean energiaGerador, boolean energiaOutros, boolean energiaInexistente, boolean esgotoPublico, boolean esgotoFossa, boolean esgotoInexistente, boolean lixoColetaPeriodica, boolean lixoQueima, boolean lixoJogaOutraArea, boolean lixoRecicla, boolean lixoEnterra, boolean lixoOutros, boolean salaDiretoria, boolean salaProfessores, boolean laboratorioInformatica, boolean laboratorioCiencias, boolean atendimentoEspecial, boolean quadraCoberta, boolean quadraDescoberta, boolean cozinha, boolean biblioteca, boolean salaLeitura, boolean parqueInfantil, boolean bercario, boolean sanitarioForaPredio, boolean sanitarioDentroPredio, boolean sanitarioEducInfant, boolean sanitarioPNE, boolean dependenciasPNE, boolean secretaria, boolean banheiroChuveiro, boolean refeitorio, boolean despensa, boolean auditorio, boolean patioCoberto, boolean patioDescoberto, boolean areaVerde, boolean lavanderia, boolean internet, boolean bandaLarga, boolean ensinoRegular, boolean regCreche, boolean regPreescola, boolean regFundamental8, boolean regFundamental9, boolean regMedioMedio, boolean regMedioIntegrado, boolean regMedioNormal, boolean regMedioProfissional, boolean ensinoEspecial, boolean espCreche, boolean espPreescola, boolean espFundamental8, boolean espFundamental9, boolean espMedioMedio, boolean espMedioIntegrado, boolean espMedioNormal, boolean espMedioProfissional, boolean espEjaFundamental, boolean espEjaMedio, boolean ensinoEja, boolean ejaFundamental, boolean ejaMedio, boolean ejaProjovem, double idebAI, double idebAF, double enemMediaGeral, double enemMediaObjetiva, double formacaoDocente) {
-        this.anoCenso = anoCenso;
-        this.cod = cod;
-        this.codCidade = codCidade;
-        this.situacaoFuncionamento = situacaoFuncionamento;
-        this.situacaoCenso = situacaoCenso;
-        this.codUf = codUf;
-        this.codMunicipio = codMunicipio;
-        this.codDistrito = codDistrito;
-        this.tipoLocalizacao = tipoLocalizacao;
-        this.regulamentada = regulamentada;
-        this.salasExistentes = salasExistentes;
-        this.salasUtilizadas = salasUtilizadas;
-        this.televisores = televisores;
-        this.videoCassetes = videoCassetes;
-        this.dvds = dvds;
-        this.parabolicas = parabolicas;
-        this.aparelhosSom = aparelhosSom;
-        this.datashows = datashows;
-        this.fax = fax;
-        this.foto = foto;
-        this.computadores = computadores;
-        this.computadoresAdm = computadoresAdm;
-        this.computadoresAlunos = computadoresAlunos;
-        this.funcionarios = funcionarios;
-        this.copiadoras = copiadoras;
-        this.retroprojetores = retroprojetores;
-        this.impressoras = impressoras;
-        this.atividadeComplementar = atividadeComplementar;
-        this.socioEconomico = socioEconomico;
-        this.nome = nome;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.regiao = regiao;
-        this.dependenciaAdministrativa = dependenciaAdministrativa;
-        this.situacaoFuncionamentoTxt = situacaoFuncionamentoTxt;
-        this.dependenciaAdministrativaTxt = dependenciaAdministrativaTxt;
-        this.inicioAno = inicioAno;
-        this.fimAno = fimAno;
-        this.siglaUf = siglaUf;
-        this.nomeMunicipio = nomeMunicipio;
-        this.nomeDistrito = nomeDistrito;
-        this.endereco = endereco;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.nomeTitulo = nomeTitulo;
-        this.inicioAnoTxt = inicioAnoTxt;
-        this.fimAnoTxt = fimAnoTxt;
-        this.tipoLocalizacaoTxt = tipoLocalizacaoTxt;
-        this.regulamentadaTxt = regulamentadaTxt;
-        this.energiaPublica = energiaPublica;
-        this.energiaGerador = energiaGerador;
-        this.energiaOutros = energiaOutros;
-        this.energiaInexistente = energiaInexistente;
-        this.esgotoPublico = esgotoPublico;
-        this.esgotoFossa = esgotoFossa;
-        this.esgotoInexistente = esgotoInexistente;
-        this.lixoColetaPeriodica = lixoColetaPeriodica;
-        this.lixoQueima = lixoQueima;
-        this.lixoJogaOutraArea = lixoJogaOutraArea;
-        this.lixoRecicla = lixoRecicla;
-        this.lixoEnterra = lixoEnterra;
-        this.lixoOutros = lixoOutros;
-        this.salaDiretoria = salaDiretoria;
-        this.salaProfessores = salaProfessores;
-        this.laboratorioInformatica = laboratorioInformatica;
-        this.laboratorioCiencias = laboratorioCiencias;
-        this.atendimentoEspecial = atendimentoEspecial;
-        this.quadraCoberta = quadraCoberta;
-        this.quadraDescoberta = quadraDescoberta;
-        this.cozinha = cozinha;
-        this.biblioteca = biblioteca;
-        this.salaLeitura = salaLeitura;
-        this.parqueInfantil = parqueInfantil;
-        this.bercario = bercario;
-        this.sanitarioForaPredio = sanitarioForaPredio;
-        this.sanitarioDentroPredio = sanitarioDentroPredio;
-        this.sanitarioEducInfant = sanitarioEducInfant;
-        this.sanitarioPNE = sanitarioPNE;
-        this.dependenciasPNE = dependenciasPNE;
-        this.secretaria = secretaria;
-        this.banheiroChuveiro = banheiroChuveiro;
-        this.refeitorio = refeitorio;
-        this.despensa = despensa;
-        this.auditorio = auditorio;
-        this.patioCoberto = patioCoberto;
-        this.patioDescoberto = patioDescoberto;
-        this.areaVerde = areaVerde;
-        this.lavanderia = lavanderia;
-        this.internet = internet;
-        this.bandaLarga = bandaLarga;
-        this.ensinoRegular = ensinoRegular;
-        this.regCreche = regCreche;
-        this.regPreescola = regPreescola;
-        this.regFundamental8 = regFundamental8;
-        this.regFundamental9 = regFundamental9;
-        this.regMedioMedio = regMedioMedio;
-        this.regMedioIntegrado = regMedioIntegrado;
-        this.regMedioNormal = regMedioNormal;
-        this.regMedioProfissional = regMedioProfissional;
-        this.ensinoEspecial = ensinoEspecial;
-        this.espCreche = espCreche;
-        this.espPreescola = espPreescola;
-        this.espFundamental8 = espFundamental8;
-        this.espFundamental9 = espFundamental9;
-        this.espMedioMedio = espMedioMedio;
-        this.espMedioIntegrado = espMedioIntegrado;
-        this.espMedioNormal = espMedioNormal;
-        this.espMedioProfissional = espMedioProfissional;
-        this.espEjaFundamental = espEjaFundamental;
-        this.espEjaMedio = espEjaMedio;
-        this.ensinoEja = ensinoEja;
-        this.ejaFundamental = ejaFundamental;
-        this.ejaMedio = ejaMedio;
-        this.ejaProjovem = ejaProjovem;
-        this.idebAI = idebAI;
-        this.idebAF = idebAF;
-        this.enemMediaGeral = enemMediaGeral;
-        this.enemMediaObjetiva = enemMediaObjetiva;
-        this.formacaoDocente = formacaoDocente;
+    @Override
+    public String toString() {
+        return "{" +
+                "anoCenso=" + anoCenso +
+                ", cod=" + cod +
+                ", codCidade=" + codCidade +
+                ", situacaoFuncionamento=" + situacaoFuncionamento +
+                ", situacaoCenso=" + situacaoCenso +
+                ", codUf=" + codUf +
+                ", codMunicipio=" + codMunicipio +
+                ", codDistrito=" + codDistrito +
+                ", tipoLocalizacao=" + tipoLocalizacao +
+                ", regulamentada=" + regulamentada +
+                ", salasExistentes=" + salasExistentes +
+                ", salasUtilizadas=" + salasUtilizadas +
+                ", televisores=" + televisores +
+                ", videoCassetes=" + videoCassetes +
+                ", dvds=" + dvds +
+                ", parabolicas=" + parabolicas +
+                ", aparelhosSom=" + aparelhosSom +
+                ", datashows=" + datashows +
+                ", fax=" + fax +
+                ", foto=" + foto +
+                ", computadores=" + computadores +
+                ", computadoresAdm=" + computadoresAdm +
+                ", computadoresAlunos=" + computadoresAlunos +
+                ", funcionarios=" + funcionarios +
+                ", copiadoras=" + copiadoras +
+                ", retroprojetores=" + retroprojetores +
+                ", impressoras=" + impressoras +
+                ", atividadeComplementar=" + atividadeComplementar +
+                ", socioEconomico=" + socioEconomico +
+                ", dependenciaAdministrativa=" + dependenciaAdministrativa +
+                ", nome='" + nome + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                ", regiao='" + regiao + '\'' +
+                ", situacaoFuncionamentoTxt='" + situacaoFuncionamentoTxt + '\'' +
+                ", dependenciaAdministrativaTxt='" + dependenciaAdministrativaTxt + '\'' +
+                ", inicioAno='" + inicioAno + '\'' +
+                ", fimAno='" + fimAno + '\'' +
+                ", siglaUf='" + siglaUf + '\'' +
+                ", nomeMunicipio='" + nomeMunicipio + '\'' +
+                ", nomeDistrito='" + nomeDistrito + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", nomeTitulo='" + nomeTitulo + '\'' +
+                ", inicioAnoTxt='" + inicioAnoTxt + '\'' +
+                ", fimAnoTxt='" + fimAnoTxt + '\'' +
+                ", tipoLocalizacaoTxt='" + tipoLocalizacaoTxt + '\'' +
+                ", regulamentadaTxt='" + regulamentadaTxt + '\'' +
+                ", aguaCacimba=" + aguaCacimba +
+                ", aguaFiltrada=" + aguaFiltrada +
+                ", aguaInexistente=" + aguaInexistente +
+                ", aguaPocoArtesiano=" + aguaPocoArtesiano +
+                ", aguaPublica=" + aguaPublica +
+                ", aguaRio=" + aguaRio +
+                ", almoxarifado=" + almoxarifado +
+                ", energiaPublica=" + energiaPublica +
+                ", energiaGerador=" + energiaGerador +
+                ", energiaOutros=" + energiaOutros +
+                ", energiaInexistente=" + energiaInexistente +
+                ", esgotoPublico=" + esgotoPublico +
+                ", esgotoFossa=" + esgotoFossa +
+                ", esgotoInexistente=" + esgotoInexistente +
+                ", lixoColetaPeriodica=" + lixoColetaPeriodica +
+                ", lixoQueima=" + lixoQueima +
+                ", lixoJogaOutraArea=" + lixoJogaOutraArea +
+                ", lixoRecicla=" + lixoRecicla +
+                ", lixoEnterra=" + lixoEnterra +
+                ", lixoOutros=" + lixoOutros +
+                ", salaDiretoria=" + salaDiretoria +
+                ", salaProfessores=" + salaProfessores +
+                ", laboratorioInformatica=" + laboratorioInformatica +
+                ", laboratorioCiencias=" + laboratorioCiencias +
+                ", atendimentoEspecial=" + atendimentoEspecial +
+                ", quadraCoberta=" + quadraCoberta +
+                ", quadraDescoberta=" + quadraDescoberta +
+                ", cozinha=" + cozinha +
+                ", biblioteca=" + biblioteca +
+                ", salaLeitura=" + salaLeitura +
+                ", parqueInfantil=" + parqueInfantil +
+                ", bercario=" + bercario +
+                ", sanitarioForaPredio=" + sanitarioForaPredio +
+                ", sanitarioDentroPredio=" + sanitarioDentroPredio +
+                ", sanitarioEducInfant=" + sanitarioEducInfant +
+                ", sanitarioPNE=" + sanitarioPNE +
+                ", dependenciasPNE=" + dependenciasPNE +
+                ", secretaria=" + secretaria +
+                ", banheiroChuveiro=" + banheiroChuveiro +
+                ", refeitorio=" + refeitorio +
+                ", despensa=" + despensa +
+                ", auditorio=" + auditorio +
+                ", patioCoberto=" + patioCoberto +
+                ", patioDescoberto=" + patioDescoberto +
+                ", alojamentoAluno=" + alojamentoAluno +
+                ", alojamentoProfessor=" + alojamentoProfessor +
+                ", areaVerde=" + areaVerde +
+                ", lavanderia=" + lavanderia +
+                ", internet=" + internet +
+                ", bandaLarga=" + bandaLarga +
+                ", alimentacao=" + alimentacao +
+                ", aee=" + aee +
+                ", ensinoRegular=" + ensinoRegular +
+                ", regCreche=" + regCreche +
+                ", regPreescola=" + regPreescola +
+                ", regFundamental8=" + regFundamental8 +
+                ", regFundamental9=" + regFundamental9 +
+                ", regMedioMedio=" + regMedioMedio +
+                ", regMedioIntegrado=" + regMedioIntegrado +
+                ", regMedioNormal=" + regMedioNormal +
+                ", regMedioProfissional=" + regMedioProfissional +
+                ", ensinoEspecial=" + ensinoEspecial +
+                ", espCreche=" + espCreche +
+                ", espPreescola=" + espPreescola +
+                ", espFundamental8=" + espFundamental8 +
+                ", espFundamental9=" + espFundamental9 +
+                ", espMedioMedio=" + espMedioMedio +
+                ", espMedioIntegrado=" + espMedioIntegrado +
+                ", espMedioNormal=" + espMedioNormal +
+                ", espMedioProfissional=" + espMedioProfissional +
+                ", espEjaFundamental=" + espEjaFundamental +
+                ", espEjaMedio=" + espEjaMedio +
+                ", ensinoEja=" + ensinoEja +
+                ", ejaFundamental=" + ejaFundamental +
+                ", ejaMedio=" + ejaMedio +
+                ", ejaProjovem=" + ejaProjovem +
+                ", ciclos=" + ciclos +
+                ", fimDeSemana=" + fimDeSemana +
+                ", pedagogiaAlternancia=" + pedagogiaAlternancia +
+                ", idebAI=" + idebAI +
+                ", idebAF=" + idebAF +
+                ", enemMediaGeral=" + enemMediaGeral +
+                ", enemMediaObjetiva=" + enemMediaObjetiva +
+                ", formacaoDocente=" + formacaoDocente +
+                ", enemPortugues=" + enemPortugues +
+                ", enemMatematica=" + enemMatematica +
+                ", enemHumanas=" + enemHumanas +
+                ", enemNaturais=" + enemNaturais +
+                ", enemRedacao=" + enemRedacao +
+                '}';
+    }
+
+    public double getEnemPortugues() {
+        return enemPortugues;
+    }
+
+    public void setEnemPortugues(double enemPortugues) {
+        this.enemPortugues = enemPortugues;
+    }
+
+    public double getEnemMatematica() {
+        return enemMatematica;
+    }
+
+    public void setEnemMatematica(double enemMatematica) {
+        this.enemMatematica = enemMatematica;
+    }
+
+    public double getEnemHumanas() {
+        return enemHumanas;
+    }
+
+    public void setEnemHumanas(double enemHumanas) {
+        this.enemHumanas = enemHumanas;
+    }
+
+    public double getEnemNaturais() {
+        return enemNaturais;
+    }
+
+    public void setEnemNaturais(double enemNaturais) {
+        this.enemNaturais = enemNaturais;
+    }
+
+    public double getEnemRedacao() {
+        return enemRedacao;
+    }
+
+    public void setEnemRedacao(double enemRedacao) {
+        this.enemRedacao = enemRedacao;
+    }
+
+    public boolean isPedagogiaAlternancia() {
+        return pedagogiaAlternancia;
+    }
+
+    public void setPedagogiaAlternancia(boolean pedagogiaAlternancia) {
+        this.pedagogiaAlternancia = pedagogiaAlternancia;
+    }
+
+    public boolean isFimDeSemana() {
+        return fimDeSemana;
+    }
+
+    public void setFimDeSemana(boolean fimDeSemana) {
+        this.fimDeSemana = fimDeSemana;
+    }
+
+    public boolean isCiclos() {
+        return ciclos;
+    }
+
+    public void setCiclos(boolean ciclos) {
+        this.ciclos = ciclos;
     }
 
     public int getAnoCenso() {
@@ -312,7 +403,7 @@ public class Escola {
         return regiao;
     }
 
-    public String getDependenciaAdministrativa() {
+    public int getDependenciaAdministrativa() {
         return dependenciaAdministrativa;
     }
 
@@ -832,7 +923,7 @@ public class Escola {
         this.regiao = regiao;
     }
 
-    public void setDependenciaAdministrativa(String dependenciaAdministrativa) {
+    public void setDependenciaAdministrativa(int dependenciaAdministrativa) {
         this.dependenciaAdministrativa = dependenciaAdministrativa;
     }
 

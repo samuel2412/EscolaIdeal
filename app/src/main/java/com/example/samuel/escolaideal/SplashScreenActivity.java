@@ -36,6 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
     private LocationRequest mLocationRequest;
     private String estado;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,8 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
     public String getEstado(){
         return estado;
     }
+
+
     public void iniciar(){
 
         new Handler().postDelayed(new Runnable() {
@@ -89,6 +92,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Acesso Internet")
                 .setMessage("Sem Acesso a Internet\nVerifique sua Conexão")
+                .setCancelable(false)
                 .setPositiveButton("Tentar Novamente", new DialogInterface.OnClickListener()
                 {
                     @Override
@@ -119,6 +123,7 @@ public class SplashScreenActivity extends AppCompatActivity implements GoogleApi
         }
         return connected;
     }
+
 
     @Override
     public void onConnected(Bundle bundle) {
