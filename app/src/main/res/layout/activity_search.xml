@@ -57,12 +57,45 @@
 
         />
       </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout3"
+        android:layout_below="@id/layout2"
+        android:layout_marginTop="10px"
+        android:weightSum="2"
+        android:orientation="horizontal">>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Estado"
+            android:id="@+id/estado"
+            />
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/Spinner03"
+            android:layout_toRightOf="@id/estado"
+
+            />
+    </LinearLayout>
+
+
+
+
+
+
+
     <Switch
         android:id="@+id/op1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/layout2"
+        android:layout_below="@id/layout3"
         android:text="Cantina"
         android:layout_marginTop="10px"/>
     <Switch

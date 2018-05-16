@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.widget.Button;
@@ -77,8 +79,18 @@ public class ResponseActivity extends AppCompatActivity {
     }
 
     public void add(Escola e){
-
-
+        String[] atributos={
+                "Ano do Censo: ", String.valueOf(e.getAnoCenso()),
+                "Código: ", String.valueOf(e.getCod()),
+                "Código da Cidade: ",String.valueOf(e.getCodCidade()),
+                "Dependência Administrativa: ",e.getDependenciaAdministrativaTxt(),
+                "Cidade: ",e.getCidade(),
+                "Estado: ",e.getEstado(),
+                "Região: ",e.getRegiao(),
+                "IDEB Ano Inicial: ",String.valueOf(e.getIdebAI()),
+                "IDEB Ano Final: ",String.valueOf(e.getIdebAF()),
+                "Média Geral no Enem: ",String.valueOf(e.getEnemMediaGeral())
+        };
         CardView card = new CardView(new ContextThemeWrapper(ResponseActivity.this, R.style.CardViewStyle), null, 0);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -98,15 +110,24 @@ public class ResponseActivity extends AppCompatActivity {
         tv_title.setTextAppearance(this, R.style.TextAppearance_AppCompat_Title);
         tv_title.setText(e.getNome());
 
-        TextView tv_caption = new TextView(this);
-        tv_caption.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-        tv_caption.setText(e.toStringBuscaAvancada());
-
 
         cardInner.addView(tv_title);
-        cardInner.addView(tv_caption);
+
+        TextView tv = new TextView(this);
+        tv.setLayoutParams(new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+
+        for(int i=0;i<atributos.length;i+=2){
+
+            SpannableStringBuilder str = new SpannableStringBuilder(atributos[i]+atributos[i+1]+System.getProperty("line.separator"));
+            str.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, atributos[i].length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+           tv.append(str);
+        }
+
+
+
+        cardInner.addView(tv);
+
+
         Button b = new Button(this);
         b.setText("Ver Trajeto");
         LinearLayout ln = new LinearLayout(this);
