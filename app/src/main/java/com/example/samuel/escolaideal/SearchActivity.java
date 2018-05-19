@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 
 public class SearchActivity extends Activity {
-        LinearLayout txt_help_gest;
-         private String array_spinner[],array_spinner2[],array_spinner3[];
+    LinearLayout txt_help_gest;
+    private String array_spinner[],array_spinner2[],array_spinner3[];
     ArrayList<Escola> listaEscola = new ArrayList<Escola>();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +101,7 @@ public class SearchActivity extends Activity {
 
         //pega dependecnia adm selecionada
         Spinner mySpinner1=(Spinner) findViewById(R.id.Spinner01);
-        int dpdAdm = mySpinner.getSelectedItemPosition();
+        int dpdAdm = mySpinner1.getSelectedItemPosition();
         if(dpdAdm!=0){
             busca += "&dependenciaAdministrativa="+dpdAdm;
         }
@@ -115,7 +115,7 @@ public class SearchActivity extends Activity {
 
         //ve quais switchs estão ligados e adiciona eles na busca
         String [] switchValues = {"","quadraCoberta=on","dependenciasPNE=on","laboratorioInformatica=on",
-        "laboratorioCiencias=on","energiaPublica=on","aguaPublica=on","patioCoberto=on","bercario=on","salaProfessores=on"
+                "laboratorioCiencias=on","energiaPublica=on","aguaPublica=on","patioCoberto=on","bercario=on","salaProfessores=on"
         };
 
         ArrayList<Switch> switches = new ArrayList<Switch>();
@@ -145,7 +145,7 @@ public class SearchActivity extends Activity {
         Log.e("DPDADM",busca);
         i.putExtras(b);
 
-         startActivity(i);
+        startActivity(i);
     }
 
     public void itensMenu(View view){

@@ -129,7 +129,7 @@ public class ResponseActivity extends AppCompatActivity {
 
 
         Button b = new Button(this);
-        b.setText("Ver Trajeto");
+        b.setText("Exibir Detalhes");
         LinearLayout ln = new LinearLayout(this);
 
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
