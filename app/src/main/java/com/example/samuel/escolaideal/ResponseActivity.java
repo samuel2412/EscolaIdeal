@@ -1,15 +1,16 @@
 package com.example.samuel.escolaideal;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
-import android.util.Log;
+import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
-import android.widget.Button;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,45 +18,36 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ResponseActivity extends AppCompatActivity {
-    private LinearLayout completo;
+    private LinearLayout completo,linearLayout;
     private ArrayList<Escola> listaEscola;
-    private ArrayList<Integer> listaEscolaInt;
-    private LinearLayout myRoot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Request window feature action bar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_response);
-
+        //instancia os LinearLayouts
         completo = new LinearLayout(this);
-        completo.setOrientation(LinearLayout.VERTICAL);
-        myRoot = (LinearLayout) findViewById(R.id.CardLayoutContent);
+        completo.setOrientation(LinearLayout.VERTICAL);//trava a orientação da tela em vertical
 
-        /*Resposta re = new Resposta();
+        linearLayout = (LinearLayout) findViewById(R.id.CardLayoutContent);
+
+
+        //Retira a string da busca do bundle passado pela SearchActivity
         Bundle bundle = getIntent().getExtras();
-        listaEscola = re.listaEscolas(bundle.getString("key1"));
-        ArrayList<Escola> listaEscolaDetalhes = new ArrayList<Escola>();
-
-        for(int e:listaEscolaInt){
-            listaEscolaDetalhes.add(re.listaEscolasDetalhe(e));
-        }
-        listaEscola = listaEscolaDetalhes;*/
-
-
-        Bundle bundle = getIntent().getExtras();
-        String busca = "";
-        busca = bundle.getString("key1");
-        Log.e("BUSCA",busca);
+        String busca = bundle.getString("key1");
+        //Log.e("BUSCA",busca);
+        //cria uma instancia da classe Resposta
         Resposta re = new Resposta();
-        ArrayList<Escola> listaEscola = re.listaEscolas(busca);
+        //Recebe um ArrayList composto pelas escolas que foram retornadas pelo metodo de busca
+        listaEscola = re.listaEscolas(busca);
 
-
+        //verifica se a lista esta vazia, caso esteja itera nessa lista criando CardViews para cada escola da lista.
         if(!(listaEscola.isEmpty())) {
             for (Escola e : listaEscola) {
                 add(e);
             }
-            myRoot.addView(completo);
+            linearLayout.addView(completo);
         }else{
+            //lista vazia -> dispara um alerta
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("Nenhuma Escola Encontrada :(")
@@ -77,8 +69,10 @@ public class ResponseActivity extends AppCompatActivity {
             ).show();
         }
     }
-
+    //metodo que cria o CardView de cada escola.
     public void add(Escola e){
+        final int codigo = e.getCod();// pega o codigo da escola para passar atras de bundle para o DetalheActivity
+        //Vetor com as strings que estarão contidas no CardView
         String[] atributos={
                 "Ano do Censo: ", String.valueOf(e.getAnoCenso()),
                 "Código: ", String.valueOf(e.getCod()),
@@ -91,43 +85,49 @@ public class ResponseActivity extends AppCompatActivity {
                 "IDEB Ano Final: ",String.valueOf(e.getIdebAF()),
                 "Média Geral no Enem: ",String.valueOf(e.getEnemMediaGeral())
         };
+        //Instancia o CardView e seta seus atributos
         CardView card = new CardView(new ContextThemeWrapper(ResponseActivity.this, R.style.CardViewStyle), null, 0);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-        int margin = 25;
-        params.setMargins(margin, margin, margin, margin);
+        //int com o valor das margens
+        int margem = 25;
+        //seta as 4 margens
+        params.setMargins(margem, margem, margem, margem);
         card.setLayoutParams(params);
-
-        LinearLayout cardInner = new LinearLayout(new ContextThemeWrapper(ResponseActivity.this, R.style.Widget_CardContent));
-
-        TextView tv_title = new TextView(this);
-        tv_title.setLayoutParams(new LinearLayout.LayoutParams(
+        //instancia o layout que será o intertior do CardView
+        LinearLayout cardInterior = new LinearLayout(new ContextThemeWrapper(ResponseActivity.this, R.style.Widget_CardContent));
+        //instancia o TextView que sera o titulo do CardView
+        TextView titulo = new TextView(this);
+        titulo.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
         ));
-        tv_title.setTextAppearance(this, R.style.TextAppearance_AppCompat_Title);
-        tv_title.setText(e.getNome());
+        //seta a estilo do titulo e seta o texto do titulo como o nome da Escola
+        titulo.setTextAppearance(this, R.style.TextAppearance_AppCompat_Title);
+        titulo.setText(e.getNome());
 
+        //adciona o titulo ao CardView
+        cardInterior.addView(titulo);
 
-        cardInner.addView(tv_title);
-
-        TextView tv = new TextView(this);
-        tv.setLayoutParams(new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        //Instancia o TextView que ira no interior do CardView
+        TextView textoInterior = new TextView(this);
+        textoInterior.setLayoutParams(new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
         for(int i=0;i<atributos.length;i+=2){
-
+            //Forma a String que sera exibida, deixando o nome dos atributos em negrito e o atributo não.
             SpannableStringBuilder str = new SpannableStringBuilder(atributos[i]+atributos[i+1]+System.getProperty("line.separator"));
             str.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, atributos[i].length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-           tv.append(str);
+            textoInterior.append(str);
         }
+        //seta o tamanho do texto
+        textoInterior.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
 
+        //adciona o TextView ao layout cardInterior
+        cardInterior.addView(textoInterior);
 
-
-        cardInner.addView(tv);
-
-
+        /*
         Button b = new Button(this);
         b.setText("Exibir Detalhes");
         LinearLayout ln = new LinearLayout(this);
@@ -136,10 +136,28 @@ public class ResponseActivity extends AppCompatActivity {
 
 
         ln.addView(b,lp);
+        cardInterior.addView(ln);
+        */
 
-        cardInner.addView(ln);
-        card.addView(cardInner);
-
+        //adiciona o cardInterior ao card
+        card.addView(cardInterior);
+        //seta o card como clicavel e seta o listener com a função chamada
+        card.setClickable(true);
+        card.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //cria a nova activiy
+                        Intent i = new android.content.Intent(ResponseActivity.this, DetalheActivity.class);
+                        //cria um bundle que carrega o codigo da escola
+                        Bundle b = new Bundle();
+                        b.putInt("Codigo",codigo);
+                        i.putExtras(b);
+                        //inicia a activity
+                        startActivity(i);
+                    }
+                });
+        //adiona o CardView montado ao LinearLayout completo
         completo.addView(card);
 
 
@@ -147,10 +165,3 @@ public class ResponseActivity extends AppCompatActivity {
 
 
 }
-/*
-
-
-
-
-
-* */

@@ -13,6 +13,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class Resposta {
+
+    //retornar um ArrayList<Escola> com as escolas que atendem aos criterios de busca
     public ArrayList<Escola> listaEscolas(String busca) {
         ArrayList<Escola> listaEscola = new ArrayList<Escola>();
 
@@ -49,7 +51,7 @@ public class Resposta {
     }
 
 
-
+    //Retornar um ArrayList de inteiros (codigo de todos as escolas de determinado estado) !NÃO ESTA SENDO USADO!
     public ArrayList<Integer> listaEscolasInt(String sigla) {
         ArrayList<Integer> listaEscola = new ArrayList<Integer>();
 
@@ -68,6 +70,8 @@ public class Resposta {
         }
         return listaEscola;
     }
+
+    //Retornar um objeto escola, buscado atraves do codigo, com todos os dados disponeveis na API
     public Escola listaEscolasDetalhe(int cod) {
         Escola e = new Escola();
 
@@ -218,7 +222,7 @@ public class Resposta {
 
 
 
-
+    //Realiza a busca na API utilizando uma string para uma busca avançada
     public String resposta(String busca){
         try {
             return  run("http://educacao.dadosabertosbr.com/api/escolas/buscaavancada?"+busca);
@@ -227,6 +231,7 @@ public class Resposta {
             return e.getMessage();
         }
     }
+    //realizada a busca de uma escola espefica atraves de seu codigo
     public String respostaDetalhes(int cod){
 
         try {

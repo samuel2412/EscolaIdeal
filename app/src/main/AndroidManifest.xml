@@ -32,6 +32,7 @@
         <activity
             android:name=".ResponseActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".DetalheActivity"></activity>
     </application>
 
 </manifest>

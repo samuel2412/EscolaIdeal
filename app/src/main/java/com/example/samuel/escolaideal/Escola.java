@@ -1,5 +1,8 @@
 package com.example.samuel.escolaideal;
 
+
+
+//Classe escola, possui todos os atributos existentes na api consultada
 public class Escola {
     private int anoCenso,cod, codCidade,situacaoFuncionamento,situacaoCenso,codUf,codMunicipio,codDistrito,tipoLocalizacao,
     regulamentada,salasExistentes,salasUtilizadas,televisores,videoCassetes,dvds,parabolicas,aparelhosSom,datashows,fax,
@@ -44,7 +47,7 @@ public class Escola {
         this.idebAF = idebAF;
         this.enemMediaGeral = enemMediaGeral;
     }
-
+    //toString para a busca avançada
     public String toStringBuscaAvancada() {
         return "{" +
                 "anoCenso=" + anoCenso +
@@ -64,7 +67,7 @@ public class Escola {
     }
 
 
-
+    //toString para todos os dados
     @Override
     public String toString() {
         return "{" +
