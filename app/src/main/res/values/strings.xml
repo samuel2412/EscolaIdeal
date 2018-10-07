@@ -2,5 +2,6 @@
     <string name="app_name">Escola Ideal</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_teste">Settings</string>
+    <string name="title_activity_new_search">Escola Ideal</string>
 
 </resources>

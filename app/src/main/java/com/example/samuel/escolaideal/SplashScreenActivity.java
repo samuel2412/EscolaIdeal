@@ -19,10 +19,14 @@ public class SplashScreenActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+
+
         //metodo que ira abrir um timer e chamara um metodo que verifica a conexao com a internet
         iniciar();
 
     }
+
 
     //metodo que inicia um timer, chama um metodo que verifica conexao com internet,e inicia a proxima activiy ou gera um alerta
     public void iniciar(){
@@ -37,7 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity{
                 // chama o metodo que verifica a conexão com a internt
                 if (temInternet()) {
                     //se tiver conexao inicia a proxima activity
-                    Intent i = new Intent(SplashScreenActivity.this, SearchActivity.class);
+                    Intent i = new Intent(SplashScreenActivity.this, CepActivity.class);
                     startActivity(i);
 
                     // Fecha esta activity
