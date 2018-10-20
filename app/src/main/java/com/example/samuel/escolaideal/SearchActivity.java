@@ -86,6 +86,8 @@ public class SearchActivity extends Activity {
         //inicia a proxima Activity(ResponseActivity)
         startActivity(i);
     }
+
+
         public String teste(){
            InputStream inputStream = getResources().openRawResource(R.raw.texto);
 
