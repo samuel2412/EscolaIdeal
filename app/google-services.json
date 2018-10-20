@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1007264761322",
+    "firebase_url": "https://escola-3a6a3.firebaseio.com",
+    "project_id": "escola-3a6a3",
+    "storage_bucket": "escola-3a6a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007264761322:android:90f839dc1df9e452",
+        "android_client_info": {
+          "package_name": "com.example.samuel.escolaideal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007264761322-pkh7i6ao8e67dtueq1smjt3p5kv5hog9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.samuel.escolaideal",
+            "certificate_hash": "29a1fe5d485bd3a1d39fbc6defc5d8b6853abf75"
+          }
+        },
+        {
+          "client_id": "1007264761322-utu3vpl53elq7306s1qishkhnd7mhuaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFmWavJo5BveDqknw3KDtUxSmsKrw7i-Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007264761322-utu3vpl53elq7306s1qishkhnd7mhuaj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
