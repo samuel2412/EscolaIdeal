@@ -3,5 +3,6 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_teste">Settings</string>
     <string name="title_activity_new_search">Escola Ideal</string>
+    <string name="title_activity_atributes">AtributesActivity</string>
 
 </resources>

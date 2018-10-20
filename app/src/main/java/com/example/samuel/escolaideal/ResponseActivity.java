@@ -1,25 +1,27 @@
 package com.example.samuel.escolaideal;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class ResponseActivity extends AppCompatActivity {
     private LinearLayout completo,linearLayout;
-    private ArrayList<Escola> listaEscola;
+    private ArrayList<Escola> listaEscola = new ArrayList<Escola>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,9 @@ public class ResponseActivity extends AppCompatActivity {
         //cria uma instancia da classe Resposta
         Resposta re = new Resposta();
         //Recebe um ArrayList composto pelas escolas que foram retornadas pelo metodo de busca
-        listaEscola = re.listaEscolas(busca);
+        //listaEscola = re.listaEscolas(busca);
+
+         provisorio(busca);
 
         //verifica se a lista esta vazia, caso esteja itera nessa lista criando CardViews para cada escola da lista.
         if(!(listaEscola.isEmpty())) {
@@ -142,7 +146,7 @@ public class ResponseActivity extends AppCompatActivity {
         //adiciona o cardInterior ao card
         card.addView(cardInterior);
         //seta o card como clicavel e seta o listener com a função chamada
-        card.setClickable(true);
+       /* card.setClickable(true);
         card.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -156,12 +160,46 @@ public class ResponseActivity extends AppCompatActivity {
                         //inicia a activity
                         startActivity(i);
                     }
-                });
+                });*/
         //adiona o CardView montado ao LinearLayout completo
         completo.addView(card);
 
 
     }
+
+    public void provisorio(String provisoria){
+        try {
+            JSONObject jsnobject = new JSONObject(provisoria);
+            JSONArray jsonArray = jsnobject.getJSONArray("escola");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject escola = jsonArray.getJSONObject(i);
+                Escola esc = new Escola();
+                esc.setCod(escola.getInt("cod"));
+                esc.setNome(escola.getString("nome"));
+                esc.setAnoCenso(escola.getInt("anoCenso"));
+                esc.setCodCidade(escola.getInt("codCidade"));
+                esc.setSituacaoFuncionamento(escola.getInt("situacaoFuncionamento"));
+                esc.setCidade(escola.getString("cidade"));
+                esc.setEstado(escola.getString("estado"));
+                esc.setRegiao(escola.getString("regiao"));
+                esc.setSituacaoFuncionamentoTxt(escola.getString("situacaoFuncionamentoTxt"));
+                esc.setDependenciaAdministrativaTxt(escola.getString("dependenciaAdministrativaTxt"));
+                esc.setIdebAF(escola.getDouble("idebAF"));
+                esc.setIdebAI(escola.getDouble("idebAI"));
+                esc.setEnemMediaGeral(escola.getDouble("enemMediaGeral"));
+                listaEscola.add(esc);
+            }
+
+
+
+        }catch (Exception e){
+            Log.e("KLEENEX",e.getMessage());
+            e.printStackTrace();
+
+        }
+
+    }
+
 
 
 }

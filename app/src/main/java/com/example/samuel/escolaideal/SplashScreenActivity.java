@@ -40,8 +40,9 @@ public class SplashScreenActivity extends AppCompatActivity{
                 // Esse método será executado sempre que o timer acabar
                 // chama o metodo que verifica a conexão com a internt
                 if (temInternet()) {
+
                     //se tiver conexao inicia a proxima activity
-                    Intent i = new Intent(SplashScreenActivity.this, CepActivity.class);
+                    Intent i = new Intent(SplashScreenActivity.this, PesoActivity.class);
                     startActivity(i);
 
                     // Fecha esta activity

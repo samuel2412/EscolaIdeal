@@ -1,0 +1,1301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PesoActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/ajuda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Marque qual atributo deseja incluir em sua busca e defina o grau de importancia dele.\nDepois será possivel escolher se o atributo sera algo que deseja que exista na escola ou não."
+            />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Digite sua rua."
+            android:id="@+id/endereco"
+            android:layout_below="@id/ajuda"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso1"
+            android:layout_below="@id/endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/distancia"
+                android:text="Distancia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+        <SeekBar
+            android:id="@+id/op1Peso"
+            android:layout_toRightOf="@+id/distancia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso2"
+            android:layout_below="@id/layoutPeso1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/quadraPeso"
+                android:text="Quadra Coberta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op2Peso"
+                android:layout_toRightOf="@+id/a3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso3"
+            android:layout_below="@id/layoutPeso2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/dependenciasPne"
+                android:text="Dependencias PNE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op3Peso"
+                android:layout_toRightOf="@+id/dependenciasPne"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100" />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso4"
+            android:layout_below="@id/layoutPeso3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/labInfPeso"
+                android:text="Laboratório de Informática"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op4Peso"
+                android:layout_toRightOf="@+id/labInfPeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso5"
+            android:layout_below="@id/layoutPeso4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/labCiePeso"
+                android:text="Laboratório de Ciências"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op5Peso"
+                android:layout_toRightOf="@+id/labCiePeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso6"
+            android:layout_below="@id/layoutPeso5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/energiaPeso"
+                android:text="Energia Pública"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op6Peso"
+                android:layout_toRightOf="@+id/energiaPeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso7"
+            android:layout_below="@id/layoutPeso6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/aguaPeso"
+                android:text="Água Filtrada"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op7Peso"
+                android:layout_toRightOf="@+id/aguaPeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso8"
+            android:layout_below="@id/layoutPeso7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/patioPeso"
+                android:text="Pátio Coberto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op8Peso"
+                android:layout_toRightOf="@+id/patioPeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso9"
+            android:layout_below="@id/layoutPeso8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/bercarioPeso"
+                android:text="Berçário"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op9Peso"
+                android:layout_toRightOf="@+id/bercario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso10"
+            android:layout_below="@id/layoutPeso9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/salaProfPeso"
+                android:text="Sala de Professores"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op10Peso"
+                android:layout_toRightOf="@+id/salaProfPeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/layoutPeso11"
+            android:layout_below="@id/layoutPeso10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/cantinaPeso"
+                android:text="Cantina Peso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op11Peso"
+                android:layout_toRightOf="@+id/cantinaPeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100" />
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutPeso12"
+                android:layout_below="@id/layoutPeso11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/quadraDescoberta"
+                    android:text="Quadra descoberta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op12Peso"
+                    android:layout_toRightOf="@+id/quadraDescoberta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutPeso13"
+                android:layout_below="@id/layoutPeso12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/biblioteca"
+                    android:text="Biblioteca"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op13Peso"
+                    android:layout_toRightOf="@+id/biblioteca"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/layoutPeso14"
+                android:layout_below="@id/layoutPeso13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/salaLeitura"
+                    android:text="Sala de Leitura"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op14Peso"
+                    android:layout_toRightOf="@+id/salaLeitura"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"  />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layoutPeso15"
+                android:layout_below="@id/layoutPeso14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/sanitarioPne"
+                    android:text="Sanitarios PNE"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op15Peso"
+                    android:layout_toRightOf="@+id/sanitarioPne"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso16"
+                android:layout_below="@id/layoutPeso15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/auditorio"
+                    android:text="Auditorio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op16Peso"
+                    android:layout_toRightOf="@+id/auditorio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso17"
+                android:layout_below="@id/layoutPeso16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box17"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/computadores"
+                    android:text="Computadores"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op17Peso"
+                    android:layout_toRightOf="@+id/computadores"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso18"
+                android:layout_below="@id/layoutPeso17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/parqueInfantil"
+                    android:text="Parque Infantil"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op18Peso"
+                    android:layout_toRightOf="@+id/parqueInfantil"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso19"
+                android:layout_below="@id/layoutPeso18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box19"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/patioDescoberto"
+                    android:text="Patio Descoberto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op19Peso"
+                    android:layout_toRightOf="@+id/patioDescoberto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutPeso20"
+                android:layout_below="@id/layoutPeso19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/refeitorio"
+                    android:text="Refeitorio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op20Peso"
+                    android:layout_toRightOf="@+id/refeitorio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso21"
+                android:layout_below="@id/layoutPeso20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box21"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/sanitarioFora"
+                    android:text="Sanitario Fora do Predio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op21Peso"
+                    android:layout_toRightOf="@+id/sanitarioFora"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+            android:id="@+id/layoutPeso22"
+            android:layout_below="@id/layoutPeso21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:weightSum="3"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/box22"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/sanitarioDentro"
+                android:text="Sanitario Dentro do Predio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                />
+            <SeekBar
+                android:id="@+id/op22Peso"
+                android:layout_toRightOf="@+id/sanitarioDentro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso23"
+                android:layout_below="@id/layoutPeso22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box23"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/internet"
+                    android:text="Internet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op23Peso"
+                    android:layout_toRightOf="@+id/internet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso24"
+                android:layout_below="@id/layoutPeso23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box24"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/regimePre"
+                    android:text="Regime Pré-Escola"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op24Peso"
+                    android:layout_toRightOf="@+id/regimePre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso25"
+                android:layout_below="@id/layoutPeso24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box25"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/regimeFundamental"
+                    android:text="Regime Fundamental"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op25Peso"
+                    android:layout_toRightOf="@+id/regimeFundamental"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso26"
+                android:layout_below="@id/layoutPeso25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box26"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/regimeMedio"
+                    android:text="Regime Medio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op26Peso"
+                    android:layout_toRightOf="@+id/regimeMedio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso27"
+                android:layout_below="@id/layoutPeso26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box27"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/regimeMedioProfissional"
+                    android:text="Regime Medio Profissional"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op27Peso"
+                    android:layout_toRightOf="@+id/regimeMedioProfissional"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso28"
+                android:layout_below="@id/layoutPeso27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box28"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/ejaFundamental"
+                    android:text="Ensino Eja Fundamental"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op28Peso"
+                    android:layout_toRightOf="@+id/ejaFundamental"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso29"
+                android:layout_below="@id/layoutPeso28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box29"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/ejaMedio"
+                    android:text="Ensino eja Medio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op29Peso"
+                    android:layout_toRightOf="@+id/ejaMedio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso30"
+                android:layout_below="@id/layoutPeso29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box30"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/ejaProJoven"
+                    android:text="Ensino eja pro jovem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op30Peso"
+                    android:layout_toRightOf="@+id/ejaProJoven"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso31"
+                android:layout_below="@id/layoutPeso30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box31"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialCreche"
+                    android:text="Especial Creche"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op31Peso"
+                    android:layout_toRightOf="@+id/especialCreche"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutPeso32"
+                android:layout_below="@id/layoutPeso31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box32"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialEjaFundamental"
+                    android:text="Especial eja Fundamental"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op32Peso"
+                    android:layout_toRightOf="@+id/especialEjaFundamental"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutPeso33"
+                android:layout_below="@id/layoutPeso32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box33"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialEjaMedio"
+                    android:text="Especial eja Medio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op33Peso"
+                    android:layout_toRightOf="@+id/especialEjaMedio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso34"
+                android:layout_below="@id/layoutPeso33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box34"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialMedioIntegrado"
+                    android:text="Especial Medio Integrado"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op34Peso"
+                    android:layout_toRightOf="@+id/especialMedioIntegrado"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso35"
+                android:layout_below="@id/layoutPeso34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box35"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialMedioMedio"
+                    android:text="Especial Medio Medio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op35Peso"
+                    android:layout_toRightOf="@+id/especialMedioMedio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso36"
+                android:layout_below="@id/layoutPeso35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box36"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialMedio"
+                    android:text="Especial Medio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op36Peso"
+                    android:layout_toRightOf="@+id/especialMedio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso37"
+                android:layout_below="@id/layoutPeso36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box37"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialMedioProfissional"
+                    android:text="Especial Medio Profissional"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op37Peso"
+                    android:layout_toRightOf="@+id/especialMedioProfissional"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso38"
+                android:layout_below="@id/layoutPeso37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box38"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/especialPreEscola"
+                    android:text="Especial Pre-Escola"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op38Peso"
+                    android:layout_toRightOf="@+id/especialPreEscola"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutPeso39"
+                android:layout_below="@id/layoutPeso38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/box39"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/enem"
+                    android:text="Enem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    />
+                <SeekBar
+                    android:id="@+id/op39Peso"
+                    android:layout_toRightOf="@+id/enem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+
+
+
+
+
+            <Button
+            android:id="@+id/queryButton"
+                android:layout_below="@id/layoutPeso39"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="next"
+            android:text="Prosseguir" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

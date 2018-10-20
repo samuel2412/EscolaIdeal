@@ -19,11 +19,12 @@ public class Resposta {
         ArrayList<Escola> listaEscola = new ArrayList<Escola>();
 
         try {
+            Log.e("AUX",busca);
             JSONArray obj = new JSONArray(resposta(busca));
             int x = obj.getInt(0);
 
             JSONArray aux = obj.getJSONArray(1);
-            //Log.e("AUX",""+aux.length());
+
             for(int i=0;i<aux.length();i++){
                 JSONObject escola = aux.getJSONObject(i);
                 Escola esc = new Escola();
@@ -43,7 +44,7 @@ public class Resposta {
                listaEscola.add(esc);
             }
             }catch (Exception e){
-              Log.e("erro",e.getMessage());
+            e.printStackTrace();
             }
         return listaEscola;
 

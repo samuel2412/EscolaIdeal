@@ -34,10 +34,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".DetalheActivity" />
         <activity android:name=".CepActivity" />
-        <activity
-            android:name=".NewSearchActivity"
-            android:label="@string/title_activity_new_search"
-           ></activity>
+        <activity android:name=".PesoActivity"></activity>
     </application>
 
 </manifest>

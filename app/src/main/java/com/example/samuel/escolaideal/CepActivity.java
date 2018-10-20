@@ -2,7 +2,6 @@ package com.example.samuel.escolaideal;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -129,8 +128,7 @@ public class CepActivity extends AppCompatActivity {
         EditText e = findViewById(R.id.entradaCep);
         String x = e.getText().toString();
         b.putString( "cep", x  );
-        Intent i = new Intent(CepActivity.this, NewSearchActivity.class);
-        startActivity(i);
+
 
 
     }
