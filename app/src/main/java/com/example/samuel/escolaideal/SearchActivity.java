@@ -17,6 +17,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.samuel.escolaideal.SplashScreenActivity.textoGlobal;
+
 
 public class SearchActivity extends Activity {
     private DatabaseReference ref;
@@ -79,6 +81,10 @@ public class SearchActivity extends Activity {
         Intent i = new android.content.Intent(SearchActivity.this, ResponseActivity.class);
         //cria o bundle que carrega a String da busca
         Bundle b = new Bundle();
+        b.putDouble("Lat",lat);
+        b.putDouble("Lon",lon);
+        b.putBooleanArray("booleanos",boxValues);
+        b.putIntArray("pesos",values);
         b.putString("key1", teste());
         //Log.e("DPDADM",busca);
         i.putExtras(b);
@@ -89,7 +95,7 @@ public class SearchActivity extends Activity {
 
 
         public String teste(){
-           InputStream inputStream = getResources().openRawResource(R.raw.texto);
+           InputStream inputStream = getResources().openRawResource(R.raw.teste);
 
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
@@ -107,7 +113,9 @@ public class SearchActivity extends Activity {
                 e.printStackTrace();
                 return null;
             }
-            return byteArrayOutputStream.toString();
+            textoGlobal = byteArrayOutputStream.toString();
+            //Log.e("TEXTO",textoGlobal);
+            return textoGlobal;
     }
 
 

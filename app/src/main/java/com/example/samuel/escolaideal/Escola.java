@@ -23,7 +23,7 @@ public class Escola {
             espMedioProfissional,espEjaFundamental,espEjaMedio,ensinoEja,ejaFundamental,ejaMedio,ejaProjovem,ciclos,fimDeSemana
             ,pedagogiaAlternancia;
         private double idebAI,idebAF,enemMediaGeral,enemMediaObjetiva,formacaoDocente,enemPortugues,enemMatematica,enemHumanas
-                ,enemNaturais,enemRedacao;
+                ,enemNaturais,enemRedacao,distanciagz;
 
     public Escola() {
     }
@@ -210,6 +210,14 @@ public class Escola {
                 ", enemNaturais=" + enemNaturais +
                 ", enemRedacao=" + enemRedacao +
                 '}';
+    }
+
+    public double getDistanciagz() {
+        return distanciagz;
+    }
+
+    public void setDistanciagz(double distanciagz) {
+        this.distanciagz = distanciagz;
     }
 
     public double getEnemPortugues() {
