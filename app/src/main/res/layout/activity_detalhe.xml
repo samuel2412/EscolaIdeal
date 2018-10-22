@@ -7,15 +7,47 @@
 
     tools:context="com.example.samuel.escolaideal.DetalheActivity">
 
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/DetalheTextLinear"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:textSize="21dp"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:id="@+id/DetalheText"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DetalheTextLinear"
+        android:orientation="vertical">
+
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir até escola"
+        android:onClick="rota"
+        />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
 
 </RelativeLayout>

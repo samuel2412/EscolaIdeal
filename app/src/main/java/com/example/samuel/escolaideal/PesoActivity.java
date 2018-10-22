@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -130,18 +131,21 @@ public class PesoActivity extends AppCompatActivity {
         }
         EditText et = (EditText) findViewById(R.id.endereco);
         String end = et.getText().toString();
-        //cria a nova activiy
-        Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);
-        //cria o bundle que carrega a String da busca
-        Bundle b = new Bundle();
-        b.putBooleanArray("booleanos",boxValues);
-        b.putIntArray("pesos",values);
-        b.putString("rua",end);
-        //Log.e("DPDADM",busca);
-        i.putExtras(b);
-        //inicia a proxima Activity(ResponseActivity)
-        startActivity(i);
-
+        if( !(end.equals(""))  &&   !(end.equals("Digite sua rua."))) {
+            //cria a nova activiy
+            Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);
+            //cria o bundle que carrega a String da busca
+            Bundle b = new Bundle();
+            b.putBooleanArray("booleanos", boxValues);
+            b.putIntArray("pesos", values);
+            b.putString("rua", end);
+            //Log.e("DPDADM",busca);
+            i.putExtras(b);
+            //inicia a proxima Activity(ResponseActivity)
+            startActivity(i);
+        }else{
+            Toast.makeText(this,"Insira sua rua",Toast.LENGTH_LONG).show();
+        }
 
     }
 

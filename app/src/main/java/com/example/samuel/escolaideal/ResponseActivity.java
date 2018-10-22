@@ -1,6 +1,7 @@
 package com.example.samuel.escolaideal;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import br.com.matheus.coordenadas.principal.Local;
 public class ResponseActivity extends AppCompatActivity {
     private LinearLayout completo,linearLayout;
     private ArrayList<Escola> listaEscola = new ArrayList<Escola>();
+    public static Escola global=null;
 
     boolean boxValues [];
     int values[];
@@ -166,21 +169,26 @@ public class ResponseActivity extends AppCompatActivity {
         //adiciona o cardInterior ao card
         card.addView(cardInterior);
         //seta o card como clicavel e seta o listener com a função chamada
-       /* card.setClickable(true);
+       card.setClickable(true);
         card.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //cria a nova activiy
+
+
+                       // cria a nova activiy
                         Intent i = new android.content.Intent(ResponseActivity.this, DetalheActivity.class);
                         //cria um bundle que carrega o codigo da escola
-                        Bundle b = new Bundle();
-                        b.putInt("Codigo",codigo);
+                       Bundle b = new Bundle();
+                       b.putString("codigo", textoInterior.getText().toString());
+                        Log.e("lng",e.getLatitude()+"      "+e.getLongitude());
+                       b.putDouble("lat",Double.parseDouble(e.getLatitude()));
+                       b.putDouble("lon",Double.parseDouble(e.getLongitude()));
                         i.putExtras(b);
                         //inicia a activity
                         startActivity(i);
                     }
-                });*/
+                });
         //adiona o CardView montado ao LinearLayout completo
         completo.addView(card);
 
@@ -189,6 +197,9 @@ public class ResponseActivity extends AppCompatActivity {
 
     public void provisorio(String provisoria){
         try {
+
+
+
             JSONObject jsnobject = new JSONObject(provisoria);
             JSONArray jsonArray = jsnobject.getJSONArray("escola");
             for (int i = 0; i < jsonArray.length(); i++) {
