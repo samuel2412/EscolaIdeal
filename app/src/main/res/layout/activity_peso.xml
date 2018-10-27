@@ -9,25 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <TextView
+
+
+
+            <TextView
             android:id="@+id/ajuda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Marque qual atributo deseja incluir em sua busca e defina o grau de importancia dele.\nDepois será possivel escolher se o atributo sera algo que deseja que exista na escola ou não."
+            android:text="Marque qual atributo deseja incluir em sua busca e defina o grau de importancia dele."
             />
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Digite sua rua."
+            android:hint="Digite sua rua."
             android:id="@+id/endereco"
             android:layout_below="@id/ajuda"
             />
-
 
         <LinearLayout
             android:id="@+id/layoutPeso1"
@@ -1280,9 +1283,6 @@
 
 
 
-
-
-
             <Button
             android:id="@+id/queryButton"
                 android:layout_below="@id/layoutPeso39"
@@ -1293,6 +1293,15 @@
             android:layout_alignParentEnd="true"
             android:onClick="next"
             android:text="Prosseguir" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/valor"
+                />
+
+
+
 
         </RelativeLayout>
 

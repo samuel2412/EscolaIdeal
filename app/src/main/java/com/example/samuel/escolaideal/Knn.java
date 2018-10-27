@@ -54,7 +54,7 @@ public class Knn
 
 						if( selecionados[ i ] == 1 )
 						{
-							Local local = new Local( Double.parseDouble(e.getLatitude()) ,Double.parseDouble(e.getLongitude( )) );
+							Local local = new Local( e.getLatitude() ,e.getLongitude( ) );
 							double x1 = Calculo.calcular( origem , local );
 							
 							somador += prioridade[ i ] * Math.pow( x1 , 2 );

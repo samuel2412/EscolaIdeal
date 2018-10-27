@@ -37,7 +37,8 @@
         <activity android:name=".DetalheActivity" />
         <activity android:name=".CepActivity" />
         <activity android:name=".PesoActivity" />
-        <activity android:name=".knnActivity"></activity>
+        <activity android:name=".knnActivity" />
+        <activity android:name=".newActivity"></activity>
     </application>
 
 </manifest>

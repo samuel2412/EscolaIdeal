@@ -16,6 +16,7 @@ public class SplashScreenActivity extends AppCompatActivity{
     private static int SPLASH_TIME_OUT = 1000;
     public static String textoGlobal;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity{
     public void iniciar(){
 
         new Handler().postDelayed(new Runnable() {
+
             /*
              * Exibindo splash com um timer.
              */

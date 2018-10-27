@@ -1,16 +1,18 @@
 package com.example.samuel.escolaideal;
 
 
+import java.io.Serializable;
 
 //Classe escola, possui todos os atributos existentes na api consultada
-public class Escola {
-    private int anoCenso,cod, codCidade,situacaoFuncionamento,situacaoCenso,codUf,codMunicipio,codDistrito,tipoLocalizacao,
-    regulamentada,salasExistentes,salasUtilizadas,televisores,videoCassetes,dvds,parabolicas,aparelhosSom,datashows,fax,
+public class Escola implements Serializable {
+    private String[] atributos;
+    private int anoCenso,cod,situacaoFuncionamento,situacaoCenso,codUf,codMunicipio,codDistrito,tipoLocalizacao,
+            regulamentada,salasExistentes,salasUtilizadas,televisores,videoCassetes,dvds,parabolicas,aparelhosSom,datashows,fax,
             foto,computadores,computadoresAdm,computadoresAlunos,funcionarios,
-    copiadoras,retroprojetores,impressoras,atividadeComplementar,socioEconomico,dependenciaAdministrativa;
+            copiadoras,retroprojetores,impressoras,atividadeComplementar,dependenciaAdministrativa;
     private String nome,cidade,estado,regiao,situacaoFuncionamentoTxt,dependenciaAdministrativaTxt,
-            inicioAno,fimAno,siglaUf,nomeMunicipio,nomeDistrito,endereco,latitude,longitude,nomeTitulo,
-            inicioAnoTxt,fimAnoTxt,tipoLocalizacaoTxt,regulamentadaTxt;
+            inicioAno,fimAno,siglaUf,nomeMunicipio,nomeDistrito,endereco,nomeTitulo,
+            inicioAnoTxt,fimAnoTxt,tipoLocalizacaoTxt,regulamentadaTxt,socioEconomico;
     private boolean aguaCacimba,aguaFiltrada,aguaInexistente,aguaPocoArtesiano,aguaPublica,aguaRio,almoxarifado,energiaPublica,
             energiaGerador,energiaOutros,energiaInexistente,esgotoPublico,esgotoFossa,esgotoInexistente,lixoColetaPeriodica,
             lixoQueima,lixoJogaOutraArea,lixoRecicla,lixoEnterra,lixoOutros,salaDiretoria,salaProfessores,laboratorioInformatica,
@@ -22,19 +24,21 @@ public class Escola {
             espCreche,espPreescola,espFundamental8,espFundamental9,espMedioMedio,espMedioIntegrado,espMedioNormal,
             espMedioProfissional,espEjaFundamental,espEjaMedio,ensinoEja,ejaFundamental,ejaMedio,ejaProjovem,ciclos,fimDeSemana
             ,pedagogiaAlternancia;
-        private double idebAI,idebAF,enemMediaGeral,enemMediaObjetiva,formacaoDocente,enemPortugues,enemMatematica,enemHumanas
-                ,enemNaturais,enemRedacao,distanciagz;
+    private double idebAI,idebAF,enemMediaGeral,enemMediaObjetiva,formacaoDocente,enemPortugues,enemMatematica,enemHumanas
+            ,enemNaturais,enemRedacao,latitude,longitude , distancia;
 
     public Escola() {
+
+
     }
     public Escola(int cod){
         this.cod = cod;
     }
 
-    public Escola(int anoCenso, int cod, int codCidade, int situacaoFuncionamento, String nome, String cidade, String estado, String regiao, int dependenciaAdministrativa, String situacaoFuncionamentoTxt, String dependenciaAdministrativaTxt, double idebAI, double idebAF, double enemMediaGeral) {
+    public Escola(int anoCenso, int cod, /*int codCidade*/ int situacaoFuncionamento, String nome, String cidade, String estado, String regiao, int dependenciaAdministrativa, String situacaoFuncionamentoTxt, String dependenciaAdministrativaTxt, double idebAI, double idebAF, double enemMediaGeral) {
         this.anoCenso = anoCenso;
         this.cod = cod;
-        this.codCidade = codCidade;
+        // this.codCidade = codCidade;
         this.situacaoFuncionamento = situacaoFuncionamento;
         this.nome = nome;
         this.cidade = cidade;
@@ -47,12 +51,12 @@ public class Escola {
         this.idebAF = idebAF;
         this.enemMediaGeral = enemMediaGeral;
     }
-    //toString para a busca avançada
+    //toString para a busca avanÃ§ada
     public String toStringBuscaAvancada() {
         return "{" +
                 "anoCenso=" + anoCenso +
                 ", cod=" + cod +
-                ", codCidade=" + codCidade +
+                // ", codCidade=" + codCidade +
                 ", situacaoFuncionamento=" + situacaoFuncionamento +
                 ", dependenciaAdministrativa=" + dependenciaAdministrativa +
                 ", cidade='" + cidade + '\'' +
@@ -66,6 +70,159 @@ public class Escola {
                 '}';
     }
 
+    public String[] getAtributos() {
+        return atributos;
+    }
+
+    public void setAtributos(String[] atributos) {
+        this.atributos = atributos;
+    }
+
+    public String[] stringFinal(){
+        String[] escola = {
+                "anoCenso=" , ""+anoCenso ,
+                " cod=" , ""+cod ,
+                   " codCidade=" , ""+codUf ,
+                " situacaoFuncionamento=" , ""+situacaoFuncionamento ,
+                " situacaoCenso=" , ""+situacaoCenso ,
+                " codUf=" , ""+codUf ,
+                " codMunicipio=" , ""+codMunicipio ,
+                " codDistrito=" , ""+codDistrito ,
+                " tipoLocalizacao=" , ""+tipoLocalizacao ,
+                " regulamentada=" , ""+regulamentada ,
+                " salasExistentes=" ,""+ salasExistentes ,
+                " salasUtilizadas=" , ""+salasUtilizadas ,
+                " televisores=" ,""+ televisores ,
+                " videoCassetes=" ,""+ videoCassetes ,
+                " dvds=" ,""+ dvds ,
+                " parabolicas=" ,""+ parabolicas ,
+                " aparelhosSom=" ,""+ aparelhosSom ,
+                " datashows=" ,""+ datashows ,
+                " fax=" , ""+fax ,
+                " foto=" ,""+ foto ,
+                " computadores=" , ""+computadores ,
+                " computadoresAdm=" , ""+computadoresAdm ,
+                " computadoresAlunos=" ,""+ computadoresAlunos ,
+                " funcionarios=" ,""+ funcionarios ,
+                " copiadoras=" , ""+copiadoras ,
+                " retroprojetores=" , ""+retroprojetores ,
+                " impressoras=" , ""+impressoras ,
+                " atividadeComplementar=" , ""+atividadeComplementar ,
+                " socioEconomico=" , socioEconomico ,
+                " dependenciaAdministrativa=" , ""+dependenciaAdministrativa ,
+                " nome='" , nome ,
+                " cidade='" , cidade ,
+                " estado='" , estado ,
+                " regiao='" , regiao ,
+                " situacaoFuncionamentoTxt='" , situacaoFuncionamentoTxt ,
+                " dependenciaAdministrativaTxt='" , dependenciaAdministrativaTxt ,
+                " inicioAno='" , inicioAno ,
+                " fimAno='" , fimAno ,
+                " siglaUf='" , siglaUf ,
+                " nomeMunicipio='" , nomeMunicipio ,
+                " nomeDistrito='" , nomeDistrito ,
+                " endereco='" , endereco ,
+                " latitude='" , ""+latitude ,
+                " longitude='" , ""+longitude ,
+                " nomeTitulo='" , nomeTitulo ,
+                " inicioAnoTxt='" , inicioAnoTxt ,
+                " fimAnoTxt='" , fimAnoTxt ,
+                " tipoLocalizacaoTxt='" , tipoLocalizacaoTxt ,
+                " regulamentadaTxt='" , regulamentadaTxt ,
+                " aguaCacimba=" , ""+aguaCacimba ,
+                " aguaFiltrada=" , ""+aguaFiltrada ,
+                " aguaInexistente=" , ""+aguaInexistente ,
+                " aguaPocoArtesiano=" ,""+ aguaPocoArtesiano ,
+                " aguaPublica=" , ""+aguaPublica ,
+                " aguaRio=" , ""+aguaRio ,
+                " almoxarifado=" , ""+almoxarifado ,
+                " energiaPublica=" ,""+ energiaPublica ,
+                " energiaGerador=" , ""+energiaGerador ,
+                " energiaOutros=" , ""+energiaOutros ,
+                " energiaInexistente=" , ""+energiaInexistente ,
+                " esgotoPublico=" ,""+ esgotoPublico ,
+                " esgotoFossa=" , ""+esgotoFossa ,
+                " esgotoInexistente=" ,""+ esgotoInexistente ,
+                " lixoColetaPeriodica=" ,""+ lixoColetaPeriodica ,
+                " lixoQueima=" , ""+lixoQueima ,
+                " lixoJogaOutraArea=" , ""+lixoJogaOutraArea ,
+                " lixoRecicla=" ,""+ lixoRecicla ,
+                " lixoEnterra=" ,""+ lixoEnterra ,
+                " lixoOutros=" ,""+ lixoOutros ,
+                " salaDiretoria=" ,""+ salaDiretoria ,
+                " salaProfessores=" , ""+salaProfessores ,
+                " laboratorioInformatica=" , ""+laboratorioInformatica ,
+                " laboratorioCiencias=" , ""+laboratorioCiencias ,
+                " atendimentoEspecial=" ,""+ atendimentoEspecial ,
+                " quadraCoberta=" ,""+ quadraCoberta ,
+                " quadraDescoberta=" , ""+quadraDescoberta ,
+                " cozinha=" , ""+cozinha ,
+                " biblioteca=" , ""+biblioteca ,
+                " salaLeitura=" , ""+salaLeitura ,
+                " parqueInfantil=" ,""+ parqueInfantil ,
+                " bercario=" , ""+bercario ,
+                " sanitarioForaPredio=" , ""+sanitarioForaPredio ,
+                " sanitarioDentroPredio=" ,""+ sanitarioDentroPredio ,
+                " sanitarioEducInfant=" ,""+ sanitarioEducInfant ,
+                " sanitarioPNE=" , ""+sanitarioPNE ,
+                " dependenciasPNE=" ,""+ dependenciasPNE ,
+                " secretaria=" , ""+secretaria ,
+                " banheiroChuveiro=" ,""+ banheiroChuveiro ,
+                " refeitorio=" ,""+ refeitorio ,
+                " despensa=" , ""+despensa ,
+                " auditorio=" , ""+auditorio ,
+                " patioCoberto=" , ""+patioCoberto ,
+                " patioDescoberto=" ,""+ patioDescoberto ,
+                " alojamentoAluno=" , ""+alojamentoAluno ,
+                " alojamentoProfessor=" , ""+alojamentoProfessor ,
+                " areaVerde=" , ""+areaVerde ,
+                " lavanderia=" ,""+ lavanderia ,
+                " internet=" , ""+internet ,
+                " bandaLarga=" , ""+bandaLarga ,
+                " alimentacao=" , ""+alimentacao ,
+                " aee=" ,""+ aee ,
+                " ensinoRegular=" ,""+ ensinoRegular ,
+                " regCreche=" ,""+ regCreche ,
+                " regPreescola=" , ""+regPreescola ,
+                " regFundamental8=" ,""+ regFundamental8 ,
+                " regFundamental9=" ,""+ regFundamental9 ,
+                " regMedioMedio=" , ""+regMedioMedio ,
+                " regMedioIntegrado=" , ""+regMedioIntegrado ,
+                " regMedioNormal=" , ""+regMedioNormal ,
+                " regMedioProfissional=" , ""+regMedioProfissional ,
+                " ensinoEspecial=" ,""+ ensinoEspecial ,
+                " espCreche=" ,""+ espCreche ,
+                " espPreescola=" ,""+ espPreescola ,
+                " espFundamental8=" ,""+ espFundamental8 ,
+                " espFundamental9=" ,""+ espFundamental9 ,
+                " espMedioMedio=" ,""+ espMedioMedio ,
+                " espMedioIntegrado=" ,""+ espMedioIntegrado ,
+                " espMedioNormal=" ,""+ espMedioNormal ,
+                " espMedioProfissional=" ,""+ espMedioProfissional ,
+                " espEjaFundamental=" ,""+ espEjaFundamental ,
+                " espEjaMedio=" , ""+espEjaMedio ,
+                " ensinoEja=" , ""+ensinoEja ,
+                " ejaFundamental=" , ""+ejaFundamental ,
+                " ejaMedio=" , ""+ejaMedio ,
+                " ejaProjovem=" ,""+ ejaProjovem ,
+                " ciclos=" , ""+ciclos ,
+                " fimDeSemana=" , ""+fimDeSemana ,
+                " pedagogiaAlternancia=" , ""+pedagogiaAlternancia ,
+                " idebAI=" ,""+ idebAI ,
+                " idebAF=" ,""+ idebAF ,
+                " enemMediaGeral=" , ""+enemMediaGeral ,
+                " enemMediaObjetiva=" ,""+ enemMediaObjetiva ,
+                " formacaoDocente=" ,""+ formacaoDocente ,
+                " enemPortugues=" , ""+enemPortugues ,
+                " enemMatematica=" ,""+ enemMatematica ,
+                " enemHumanas=" , ""+enemHumanas ,
+                " enemNaturais=" ,""+ enemNaturais ,
+                " enemRedacao=" , ""+enemRedacao ,
+                "distancia=" , ""+distancia
+        };
+        return escola;
+
+    }
 
     //toString para todos os dados
     @Override
@@ -73,7 +230,7 @@ public class Escola {
         return "{" +
                 "anoCenso=" + anoCenso +
                 ", cod=" + cod +
-                ", codCidade=" + codCidade +
+                //   ", codCidade=" + codCidade +
                 ", situacaoFuncionamento=" + situacaoFuncionamento +
                 ", situacaoCenso=" + situacaoCenso +
                 ", codUf=" + codUf +
@@ -209,15 +366,8 @@ public class Escola {
                 ", enemHumanas=" + enemHumanas +
                 ", enemNaturais=" + enemNaturais +
                 ", enemRedacao=" + enemRedacao +
+                ",distancia=" + distancia +
                 '}';
-    }
-
-    public double getDistanciagz() {
-        return distanciagz;
-    }
-
-    public void setDistanciagz(double distanciagz) {
-        this.distanciagz = distanciagz;
     }
 
     public double getEnemPortugues() {
@@ -292,9 +442,9 @@ public class Escola {
         return cod;
     }
 
-    public int getCodCidade() {
-        return codCidade;
-    }
+    //public int getCodCidade() {
+    //  return codCidade;
+    //}
 
     public int getSituacaoFuncionamento() {
         return situacaoFuncionamento;
@@ -396,7 +546,7 @@ public class Escola {
         return atividadeComplementar;
     }
 
-    public int getSocioEconomico() {
+    public String getSocioEconomico() {
         return socioEconomico;
     }
 
@@ -452,11 +602,11 @@ public class Escola {
         return endereco;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
@@ -812,9 +962,9 @@ public class Escola {
         this.cod = cod;
     }
 
-    public void setCodCidade(int codCidade) {
-        this.codCidade = codCidade;
-    }
+    // public void setCodCidade(int codCidade) {
+    //   this.codCidade = codCidade;
+    //}
 
     public void setSituacaoFuncionamento(int situacaoFuncionamento) {
         this.situacaoFuncionamento = situacaoFuncionamento;
@@ -916,7 +1066,7 @@ public class Escola {
         this.atividadeComplementar = atividadeComplementar;
     }
 
-    public void setSocioEconomico(int socioEconomico) {
+    public void setSocioEconomico( String socioEconomico) {
         this.socioEconomico = socioEconomico;
     }
 
@@ -972,11 +1122,11 @@ public class Escola {
         this.endereco = endereco;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -1322,6 +1472,12 @@ public class Escola {
 
     public void setFormacaoDocente(double formacaoDocente) {
         this.formacaoDocente = formacaoDocente;
+    }
+    public double getDistancia() {
+        return distancia;
+    }
+    public void setDistancia(double distancia) {
+        this.distancia = distancia;
     }
 
 
