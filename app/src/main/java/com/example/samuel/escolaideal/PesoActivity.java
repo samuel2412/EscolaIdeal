@@ -1,7 +1,6 @@
 package com.example.samuel.escolaideal;
 
 import android.content.Intent;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class PesoActivity extends AppCompatActivity {
-    final Geocoder geocoder = new Geocoder(this);
     ArrayList<SeekBar> seekBars;
     ArrayList<LinearLayout> ln;
 

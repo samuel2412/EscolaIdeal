@@ -41,6 +41,7 @@ public class ResponseActivity extends AppCompatActivity {
     boolean boxValues [];
     int values[];
     double lat,lon;
+    String codMunicipio="";
 
 
 
@@ -63,6 +64,7 @@ public class ResponseActivity extends AppCompatActivity {
             values = extras.getIntArray("pesos");
             lat = extras.getDouble("lat");
             lon = extras.getDouble("lon");
+            codMunicipio = extras.getString("municipio");
 
         //carrega a lista de escolas do servidor
         try {

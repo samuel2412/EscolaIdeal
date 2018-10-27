@@ -31,13 +31,19 @@
             android:id="@+id/endereco"
             android:layout_below="@id/ajuda"
             />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:id="@+id/cep"
+                android:layout_below="@id/endereco"
+                />
 
         <LinearLayout
             android:id="@+id/layoutPeso1"
-            android:layout_below="@id/endereco"
+            android:layout_below="@id/cep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px"
             android:weightSum="3"
             android:orientation="horizontal">
             <CheckBox
