@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,8 +29,10 @@ import java.util.List;
 import br.com.matheus.coordenadas.principal.Local;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 
@@ -60,17 +63,17 @@ public class ResponseActivity extends AppCompatActivity {
         //Retira a string da busca do bundle passado pela SearchActivity
         Bundle extras = getIntent().getExtras();
 
-            boxValues = extras.getBooleanArray("booleanos");
-            values = extras.getIntArray("pesos");
-            lat = extras.getDouble("lat");
-            lon = extras.getDouble("lon");
-            codMunicipio = extras.getString("municipio");
+        boxValues = extras.getBooleanArray("booleanos");
+        values = extras.getIntArray("pesos");
+        lat = extras.getDouble("lat");
+        lon = extras.getDouble("lon");
+        codMunicipio = extras.getString("municipio");
 
         //carrega a lista de escolas do servidor
         try {
             run();
         } catch (Exception e) {
-            Log.e("NETFLIX","erro",e.getCause());
+            Log.e("GAP","erro",e.getCause());
             e.printStackTrace();
         }
 
@@ -205,14 +208,78 @@ public class ResponseActivity extends AppCompatActivity {
 
 
     }
+   /* String post() throws IOException {
+       MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        String url ="https://a5fui2lw3d.execute-api.us-east-1.amazonaws.com/demo/teste";
+        String json ="{" +
+                        "'queryStringParameters':" +
+                            "{" +
+                                "'m_nomeMunicipio': '\'Guarulhos\''," +
+                                "'e_situacaoFuncionamento': '1'," +
+                                "'e_cozinha': '0'" +
+                            "}" +
+                        "}";
+        RequestBody body = RequestBody.create(JSON, json);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        return response.body().string();}*/
+
     void run() throws IOException {
+        //ProgressBar pb = new ProgressBar(this);
+        //linearLayout.addView(pb);
+
+
+        //String BASE_URL = "https://a5fui2lw3d.execute-api.us-east-1.amazonaws.com/demo/teste";
 
         OkHttpClient client = new OkHttpClient();
 
+
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        String url ="https://a5fui2lw3d.execute-api.us-east-1.amazonaws.com/demo/teste";
+        String name = "\"john\"";
+        String json =   "{" +
+                            "\"queryStringParameters\":" +
+                                "{" +
+                                    " \"m_codMunicipio\": \""+codMunicipio+"\"," +
+                                    "\"e_situacaoFuncionamento\": \"1\"," +
+                                    "\"e_cozinha\": \"0\"" +
+                                "}" +
+                        "}";
+        RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
-                .url("https://a5fui2lw3d.execute-api.us-east-1.amazonaws.com/demo/teste")
+                .url(url)
+                .post(body)
                 .build();
 
+
+    Log.e("GAP",json);
+
+
+
+
+
+       /*RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("m_codMunicipio", codMunicipio)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(BASE_URL)
+                .post(requestBody)
+                .build();
+
+
+
+
+
+
+       Request request = new Request.Builder()
+                .url("https://a5fui2lw3d.execute-api.us-east-1.amazonaws.com/demo/teste")
+                .build();
+                */
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -228,7 +295,7 @@ public class ResponseActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-
+                            Log.e("GAP",""+myResponse);
                             JSONArray jsonArray = new JSONArray(myResponse);
 
                             for (int i = 0; i < jsonArray.length(); i++) {
@@ -243,8 +310,8 @@ public class ResponseActivity extends AppCompatActivity {
                                 e.setSituacaoCenso(escola.getInt("situacaoCenso"));
                                 e.setInicioAno(escola.getString("inicioAno"));
                                 e.setFimAno(escola.getString("fimAno"));
-                                e.setCodUf(escola.getInt("codEstado"));
-                                e.setSiglaUf(escola.getString("sigla"));
+                                //e.setCodUf(escola.getInt("codEstado"));
+                               // e.setSiglaUf(escola.getString("sigla"));
                                 e.setCodMunicipio(escola.getInt("codMunicipio"));
                                 e.setNomeMunicipio(escola.getString("nomeDistrito"));
                                 e.setCodDistrito(escola.getInt("codDistrito"));
@@ -381,11 +448,15 @@ public class ResponseActivity extends AppCompatActivity {
 
 
                             }
+
                             achaMelhor();
+                            ProgressBar pb = (ProgressBar)findViewById(R.id.pb);
+                            RelativeLayout rr = (RelativeLayout)findViewById(R.id.responseRelative);
+                            rr.removeView(pb);
                             setInterface();
 
                         } catch (JSONException e) {
-                            Log.e("NETFLIX",e.getLocalizedMessage());
+                            Log.e("GAP",e.getLocalizedMessage());
 
                             e.printStackTrace();
                         }
@@ -429,16 +500,16 @@ public class ResponseActivity extends AppCompatActivity {
 
             for( int ct = 0 ; ct < selecionados.length ; ct++ ) {
 
-                    Method m = classe.getMethod(  DicionarioMetodos.CHAVES.get( selecionados[ ct ] ) , boolean.class );
-                    m.invoke( escolaIdeal , true );
-                            }// Fim do for
+                Method m = classe.getMethod(  DicionarioMetodos.CHAVES.get( selecionados[ ct ] ) , boolean.class );
+                m.invoke( escolaIdeal , true );
+            }// Fim do for
 
             //Aqui vai carregar o banco
-           // EscolaDAO dao = new EscolaDAO( );
+            // EscolaDAO dao = new EscolaDAO( );
 
 
 
-           // List< Escola > lista = dao.consulta( 35 );//Estado de SP
+            // List< Escola > lista = dao.consulta( 35 );//Estado de SP
             System.err.println( "Consultou" );
 
             //Aqui Chama a classe knn

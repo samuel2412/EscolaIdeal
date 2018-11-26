@@ -26,7 +26,7 @@ import okhttp3.Response;
 public class SearchActivity extends Activity {
     final Geocoder geocoder = new Geocoder(this);
     private String rua="";
-    private boolean boxValues [];
+    private boolean boxValues [],verificador=true;
     private int values[];
     private String cep="";
     private Double lat,lon;
@@ -43,8 +43,12 @@ public class SearchActivity extends Activity {
             boxValues = extras.getBooleanArray("booleanos");
             values = extras.getIntArray("pesos");
         }
-        getCep();
-
+        int x = 0;
+        while(verificador) {
+            getCep();
+            Log.e("CONTADOR",""+x);
+            x++;
+        }
         try {
             run();
         } catch (Exception e) {
@@ -70,14 +74,16 @@ public class SearchActivity extends Activity {
                 addresses = geocoder.getFromLocation(lat, lon, 1);
                 cep = addresses.get(0).getPostalCode();
                                //cep = String.format("Latitude: %f, Longitude: %f", address.getLatitude(), address.getLongitude());
-
+                verificador =false;
                 //Toast.makeText(this, cep, Toast.LENGTH_LONG).show();
             } else {
                 // Display appropriate message when Geocoder services are not available
 
                 //Toast.makeText(this,"Unable to geocode zipcode", Toast.LENGTH_LONG).show();
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
+            Log.e("GABRIEL",e.getMessage());
+
             // handle exception
         }
 
@@ -138,6 +144,8 @@ public class SearchActivity extends Activity {
 
     //AQUI LE O ARQUIVO DE TEXTO
     public void confirmar(View view) {
+        Log.e("BANANA","lat"+lat+"long"+lon+"cep"+cep);
+        //
         //cria a nova activiy
         Intent i = new android.content.Intent(SearchActivity.this, ResponseActivity.class);
         //cria o bundle que carrega a String da busca
@@ -146,8 +154,12 @@ public class SearchActivity extends Activity {
         b.putDouble("Lon",lon);
         b.putBooleanArray("booleanos",boxValues);
         b.putIntArray("pesos",values);
-        b.putString("municipio",end.getIbge());
-
+       if(end.getIbge()!=null) {
+           b.putString("municipio", end.getIbge());
+           Log.e("NETFLIX","achou municipio");
+       }else{
+           b.putString("municipio", "3550308");
+       }
         //Log.e("DPDADM",busca);
         i.putExtras(b);
 
