@@ -123,7 +123,6 @@ public class ResponseActivity extends AppCompatActivity {
                 "Dependência Administrativa: ",e.getDependenciaAdministrativaTxt(),
                 "Cidade: ",e.getCidade(),
                 "Estado: ",e.getEstado(),
-                "Região: ",e.getRegiao(),
                 "IDEB Ano Inicial: ",String.valueOf(e.getIdebAI()),
                 "IDEB Ano Final: ",String.valueOf(e.getIdebAF()),
                 "Média Geral no Enem: ",String.valueOf(e.getEnemMediaGeral())
@@ -310,6 +309,7 @@ public class ResponseActivity extends AppCompatActivity {
                                 e.setSituacaoCenso(escola.getInt("situacaoCenso"));
                                 e.setInicioAno(escola.getString("inicioAno"));
                                 e.setFimAno(escola.getString("fimAno"));
+                                //e.setCidade(escola.getString("codCidade"));
                                 //e.setCodUf(escola.getInt("codEstado"));
                                // e.setSiglaUf(escola.getString("sigla"));
                                 e.setCodMunicipio(escola.getInt("codMunicipio"));
@@ -448,7 +448,7 @@ public class ResponseActivity extends AppCompatActivity {
 
 
                             }
-
+                            Log.e("CARRE",listaEscola.size()+"");
                             achaMelhor();
                             ProgressBar pb = (ProgressBar)findViewById(R.id.pb);
                             RelativeLayout rr = (RelativeLayout)findViewById(R.id.responseRelative);
@@ -517,7 +517,9 @@ public class ResponseActivity extends AppCompatActivity {
 
             Escola[ ] ordem = ia.classificacao( );
             //ia.melhorEscola( );
+
             ArrayList<Escola> ordenado = new ArrayList<Escola>();
+
             for(int q=0;q<ordem.length;q++){
                 ordenado.add(ordem[q]);
             }

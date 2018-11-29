@@ -3,8 +3,9 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/searchRelative"
     android:layout_margin="20dp"
     tools:context="com.example.samuel.escolaideal.SearchActivity">
 
@@ -12,6 +13,7 @@
         android:id="@+id/textoTeste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         />
     <EditText
         android:layout_width="fill_parent"
@@ -19,6 +21,7 @@
         android:layout_margin="10dp"
         android:id="@+id/enderecoConfirm"
         android:layout_below="@id/textoTeste"
+        android:visibility="invisible"
         />
 
     <Button
@@ -31,9 +34,15 @@
         android:onClick="confirmar"
         android:id="@+id/confirmar"
         android:text="Confirmar"
+        android:visibility="invisible"
         />
 
-
+    <ProgressBar
+        android:id="@+id/pbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+       />
 </RelativeLayout>
 
 

@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -43,12 +45,19 @@ public class SearchActivity extends Activity {
             boxValues = extras.getBooleanArray("booleanos");
             values = extras.getIntArray("pesos");
         }
-        int x = 0;
-        while(verificador) {
+        int contador = 0;
+
+        while(verificador && contador<10) {
             getCep();
-            Log.e("CONTADOR",""+x);
-            x++;
+            Log.e("CONTADOR",""+contador);
+            contador++;
         }
+        if(verificador){
+            Toast.makeText(this,"Rua informada não encontrada, tente novamente ou informe outra rua.", Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+
         try {
             run();
         } catch (Exception e) {
@@ -56,8 +65,16 @@ public class SearchActivity extends Activity {
             e.printStackTrace();
         }
 
-
+        TextView tv = (TextView)findViewById(R.id.textoTeste);
+        EditText et = (EditText)findViewById(R.id.enderecoConfirm);
+        ProgressBar pb = (ProgressBar) findViewById(R.id.pbs);
         Button b = (Button)findViewById(R.id.confirmar);
+
+        tv.setVisibility(View.VISIBLE);
+        et.setVisibility(View.VISIBLE);
+        pb.setVisibility(View.INVISIBLE);
+        b.setVisibility(View.VISIBLE);
+
         b.setClickable(true);
 
     }
@@ -75,6 +92,10 @@ public class SearchActivity extends Activity {
                 cep = addresses.get(0).getPostalCode();
                                //cep = String.format("Latitude: %f, Longitude: %f", address.getLatitude(), address.getLongitude());
                 verificador =false;
+
+
+
+
                 //Toast.makeText(this, cep, Toast.LENGTH_LONG).show();
             } else {
                 // Display appropriate message when Geocoder services are not available
@@ -154,12 +175,9 @@ public class SearchActivity extends Activity {
         b.putDouble("Lon",lon);
         b.putBooleanArray("booleanos",boxValues);
         b.putIntArray("pesos",values);
-       if(end.getIbge()!=null) {
-           b.putString("municipio", end.getIbge());
-           Log.e("NETFLIX","achou municipio");
-       }else{
-           b.putString("municipio", "3550308");
-       }
+        b.putString("municipio", end.getIbge());
+
+
         //Log.e("DPDADM",busca);
         i.putExtras(b);
 
