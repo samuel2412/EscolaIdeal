@@ -16,8 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class PesoActivity extends AppCompatActivity {
-    ArrayList<SeekBar> seekBars;
-    ArrayList<LinearLayout> ln;
+   private  ArrayList<SeekBar> seekBars;
+    private ArrayList<LinearLayout> ln;
 
 
 
@@ -25,6 +25,9 @@ public class PesoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peso);
+
+
+
 
         seekBars = getSeekBars();
         ln = getLn();
@@ -225,8 +228,8 @@ public class PesoActivity extends AppCompatActivity {
             values[aux] = seek.getProgress();
             aux++;
         }
-        EditText et = (EditText) findViewById(R.id.endereco);
-        String end = et.getText().toString();
+        EditText edittext =  (EditText) findViewById(R.id.endereco);
+        String end = edittext.getText().toString();
         if( !(end.equals(""))) {
             //cria a nova activiy
             Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);

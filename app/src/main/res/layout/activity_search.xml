@@ -12,16 +12,27 @@
     <TextView
         android:id="@+id/textoTeste"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
+        android:layout_height="35dp"
+        android:textSize="30dp"
+        android:text="Confirme seu CEP"
         />
+
+    <Button
+        android:id="@+id/hint"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/textoTeste"
+
+        android:text="\?" />
+
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:id="@+id/enderecoConfirm"
         android:layout_below="@id/textoTeste"
-        android:visibility="invisible"
+
         />
 
     <Button
@@ -34,15 +45,8 @@
         android:onClick="confirmar"
         android:id="@+id/confirmar"
         android:text="Confirmar"
-        android:visibility="invisible"
         />
 
-    <ProgressBar
-        android:id="@+id/pbs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-       />
 </RelativeLayout>
 
 

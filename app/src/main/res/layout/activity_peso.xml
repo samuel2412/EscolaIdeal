@@ -30,6 +30,8 @@
             android:hint="Digite sua rua."
             android:id="@+id/endereco"
             android:layout_below="@id/ajuda"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             />
             <TextView
                 android:layout_width="fill_parent"

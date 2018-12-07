@@ -85,9 +85,12 @@ public class ResponseActivity extends AppCompatActivity {
 
         //verifica se a lista esta vazia, caso esteja itera nessa lista criando CardViews para cada escola da lista.
         if(!(listaEscola.isEmpty())) {
-            for (Escola e : listaEscola) {
-                add(e);
+            for(int i=0;i<10;i++){
+                add(listaEscola.get(i),i);
             }
+            //for (Escola e : listaEscola) {
+            //    add(e);
+           // }
             linearLayout.addView(completo);
         }else{
             //lista vazia -> dispara um alerta
@@ -113,7 +116,7 @@ public class ResponseActivity extends AppCompatActivity {
         }
     }
     //metodo que cria o CardView de cada escola.
-    public void add(Escola e){
+    public void add(Escola e,int indice){
         final int codigo = e.getCod();// pega o codigo da escola para passar atras de bundle para o DetalheActivity
         //Vetor com as strings que estarão contidas no CardView
         String[] atributos={
@@ -149,7 +152,7 @@ public class ResponseActivity extends AppCompatActivity {
         ));
         //seta a estilo do titulo e seta o texto do titulo como o nome da Escola
         titulo.setTextAppearance(this, R.style.TextAppearance_AppCompat_Title);
-        titulo.setText(e.getNome());
+        titulo.setText(indice+1+".    "+e.getNome());
 
         //adciona o titulo ao CardView
         cardInterior.addView(titulo);
@@ -197,6 +200,8 @@ public class ResponseActivity extends AppCompatActivity {
                         //cria um bundle que carrega o codigo da escola
                         Bundle b = new Bundle();
                         b.putSerializable("school",e);
+                        b.putDouble("lat",lat);
+                        b.putDouble("lon",lon);
                         i.putExtras(b);
                         //inicia a activity
                         startActivity(i);
@@ -242,11 +247,13 @@ public class ResponseActivity extends AppCompatActivity {
         String json =   "{" +
                             "\"queryStringParameters\":" +
                                 "{" +
-                                    " \"m_codMunicipio\": \""+codMunicipio+"\"," +
-                                    "\"e_situacaoFuncionamento\": \"1\"," +
-                                    "\"e_cozinha\": \"0\"" +
+                                    " \"latitude\": \""+lat+"\"," +
+                                    "\"longitude\": \""+lon+"\"," +
+                                     "\"range\": \"3.5\"," +
+                                    "\"m_codMunicipio\":  \""+codMunicipio+"\"" +
                                 "}" +
                         "}";
+       // {queryStringParameters":{"latitude": x,"longitude": y,"range": 3.5,"m_codMunicipio": z}}
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)

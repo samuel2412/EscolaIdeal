@@ -28,7 +28,8 @@ public class DetalheActivity extends AppCompatActivity {
         try {
             Bundle bundle = getIntent().getExtras();
             e = (Escola) bundle.getSerializable("school");
-
+            lat = bundle.getDouble("lat");
+            lon = bundle.getDouble("lon");
             Log.e("ACER", e.toString());
             setTela();
         }catch (Exception ex){
@@ -38,7 +39,9 @@ public class DetalheActivity extends AppCompatActivity {
     }
     public void rota(View view){
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("http://maps.google.com/maps?&daddr="+e.getLatitude()+","+e.getLongitude()));
+                //Uri.parse("http://maps.google.com/maps?saddr="+lat+"&daddr="+lon));
+                Uri.parse("http://maps.google.com/maps?maps?saddr="+lat+","+lon+"&daddr="+e.getLatitude()+","+e.getLongitude()));
+        Log.e("MAPA","http://maps.google.com/maps?maps?saddr="+lat+","+lon+"&daddr="+e.getLatitude()+","+e.getLongitude());
         startActivity(intent);
     }
     public void setTela(){

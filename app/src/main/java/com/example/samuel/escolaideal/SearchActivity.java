@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -26,7 +24,7 @@ import okhttp3.Response;
 
 
 public class SearchActivity extends Activity {
-    final Geocoder geocoder = new Geocoder(this);
+    private Geocoder geocoder;
     private String rua="";
     private boolean boxValues [],verificador=true;
     private int values[];
@@ -36,7 +34,7 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        geocoder = new Geocoder(this);
         //captura os valores do bundle
         Bundle extras = getIntent().getExtras();
 
@@ -45,17 +43,16 @@ public class SearchActivity extends Activity {
             boxValues = extras.getBooleanArray("booleanos");
             values = extras.getIntArray("pesos");
         }
-        int contador = 0;
 
-        while(verificador && contador<10) {
-            getCep();
-            Log.e("CONTADOR",""+contador);
-            contador++;
-        }
-        if(verificador){
-            Toast.makeText(this,"Rua informada não encontrada, tente novamente ou informe outra rua.", Toast.LENGTH_LONG).show();
-            finish();
-        }
+        Button hint = (Button)findViewById(R.id.hint);
+        hint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SearchActivity.this,"O CEP é obtido através de terceiros, podendo ser o CEP da rua informada ou de vias próximas.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        getCep();
 
 
         try {
@@ -65,57 +62,62 @@ public class SearchActivity extends Activity {
             e.printStackTrace();
         }
 
-        TextView tv = (TextView)findViewById(R.id.textoTeste);
-        EditText et = (EditText)findViewById(R.id.enderecoConfirm);
-        ProgressBar pb = (ProgressBar) findViewById(R.id.pbs);
+
+
         Button b = (Button)findViewById(R.id.confirmar);
-
-        tv.setVisibility(View.VISIBLE);
-        et.setVisibility(View.VISIBLE);
-        pb.setVisibility(View.INVISIBLE);
-        b.setVisibility(View.VISIBLE);
-
         b.setClickable(true);
 
     }
     public void getCep(){
-
+        boolean check=false;
         try {
-            List<Address> addresses = geocoder.getFromLocationName(rua, 1);
+            List<Address> addresses = geocoder.getFromLocationName(rua, 10);
+
             if (addresses != null && !addresses.isEmpty()) {
+
+
                 Address address = addresses.get(0);
-                // Use the address as needed
+
                 lat = address.getLatitude();
                 lon = address.getLongitude();
 
-                addresses = geocoder.getFromLocation(lat, lon, 1);
-                cep = addresses.get(0).getPostalCode();
-                               //cep = String.format("Latitude: %f, Longitude: %f", address.getLatitude(), address.getLongitude());
-                verificador =false;
-
-
-
+                addresses = geocoder.getFromLocation(lat,lon, 10);
+                String primeiro= addresses.get(0).getPostalCode();
+                if(primeiro.length()<9) {
+                    int aux =1;
+                    while(!check && aux<addresses.size() ) {
+                        Address a = addresses.get(aux);
+                        String candidato = a.getPostalCode();
+                        if(candidato.startsWith(primeiro) && candidato.length()==9  ){
+                            cep = candidato;
+                            check = true;
+                        }
+                        aux++;
+                        Log.e("Matheus", "cep    " + a.getPostalCode());
+                    }
+                }else if(primeiro.length()==9){
+                    cep = primeiro;
+                    check = true;
+                }
 
                 //Toast.makeText(this, cep, Toast.LENGTH_LONG).show();
-            } else {
-                // Display appropriate message when Geocoder services are not available
-
-                //Toast.makeText(this,"Unable to geocode zipcode", Toast.LENGTH_LONG).show();
             }
+
+            if(check){
+                EditText et  = (EditText)findViewById(R.id.enderecoConfirm);
+                et.setText(cep);
+            }else{
+                Toast.makeText(this,"Rua informada não encontrada, tente novamente ou informe outra rua.", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+
         } catch (Exception e) {
-            Log.e("GABRIEL",e.getMessage());
+            Log.e("PESQUISA",""+String.valueOf(e));
+            Toast.makeText(this,"Verifique sua conexão com a internet.", Toast.LENGTH_LONG).show();
+            finish();
 
-            // handle exception
         }
-
-
-
-
-        TextView tx = (TextView)findViewById(R.id.textoTeste);
-        tx.setText("Confirme seu Cep");
-        EditText et  = (EditText)findViewById(R.id.enderecoConfirm);
-        et.setText(cep);
-
 
     }
 
@@ -171,8 +173,8 @@ public class SearchActivity extends Activity {
         Intent i = new android.content.Intent(SearchActivity.this, ResponseActivity.class);
         //cria o bundle que carrega a String da busca
         Bundle b = new Bundle();
-        b.putDouble("Lat",lat);
-        b.putDouble("Lon",lon);
+        b.putDouble("lat",lat);
+        b.putDouble("lon",lon);
         b.putBooleanArray("booleanos",boxValues);
         b.putIntArray("pesos",values);
         b.putString("municipio", end.getIbge());
@@ -279,7 +281,6 @@ public class SearchActivity extends Activity {
                 this.gia = gia;
             }
         }
-
 
 
 }
