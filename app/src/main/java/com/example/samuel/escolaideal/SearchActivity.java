@@ -6,16 +6,10 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-
 import java.io.IOException;
 import java.util.List;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -26,7 +20,7 @@ import okhttp3.Response;
 public class SearchActivity extends Activity {
     private Geocoder geocoder;
     private String rua="";
-    private boolean boxValues [],verificador=true;
+    private boolean boxValues [];
     private int values[];
     private String cep="";
     private Double lat,lon;
@@ -39,39 +33,36 @@ public class SearchActivity extends Activity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            rua = extras.getString("rua");
+
+
+            lat = extras.getDouble("lat");
+            lon = extras.getDouble("lon");
+            rua = extras.getString("ruaId");
+
             boxValues = extras.getBooleanArray("booleanos");
             values = extras.getIntArray("pesos");
         }
 
-        Button hint = (Button)findViewById(R.id.hint);
-        hint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SearchActivity.this,"O CEP é obtido através de terceiros, podendo ser o CEP da rua informada ou de vias próximas.", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        getCep();
 
 
         try {
+            getCep();
             run();
+
+
         } catch (Exception e) {
             Log.e("NETFLIX",String.valueOf(e));
             e.printStackTrace();
         }
 
-
-
-        Button b = (Button)findViewById(R.id.confirmar);
-        b.setClickable(true);
-
     }
+
+
+
     public void getCep(){
         boolean check=false;
         try {
-            List<Address> addresses = geocoder.getFromLocationName(rua, 10);
+           /* List<Address> addresses = geocoder.getFromLocationName(rua, 10);
 
             if (addresses != null && !addresses.isEmpty()) {
 
@@ -80,20 +71,23 @@ public class SearchActivity extends Activity {
 
                 lat = address.getLatitude();
                 lon = address.getLongitude();
-
-                addresses = geocoder.getFromLocation(lat,lon, 10);
+        */
+            List<Address> addresses = geocoder.getFromLocation(lat,lon, 10);
+            if (addresses != null && !addresses.isEmpty()) {
                 String primeiro= addresses.get(0).getPostalCode();
                 if(primeiro.length()<9) {
                     int aux =1;
                     while(!check && aux<addresses.size() ) {
                         Address a = addresses.get(aux);
-                        String candidato = a.getPostalCode();
+                        String candidato = String.valueOf(a.getPostalCode());
                         if(candidato.startsWith(primeiro) && candidato.length()==9  ){
                             cep = candidato;
                             check = true;
+                        }else if(primeiro.equals("null")){
+                            primeiro = candidato;
                         }
                         aux++;
-                        Log.e("Matheus", "cep    " + a.getPostalCode());
+                        Log.e("Matheus", "primeiro    "+primeiro+ "  candidato  "+candidato);
                     }
                 }else if(primeiro.length()==9){
                     cep = primeiro;
@@ -104,8 +98,6 @@ public class SearchActivity extends Activity {
             }
 
             if(check){
-                EditText et  = (EditText)findViewById(R.id.enderecoConfirm);
-                et.setText(cep);
             }else{
                 Toast.makeText(this,"Rua informada não encontrada, tente novamente ou informe outra rua.", Toast.LENGTH_LONG).show();
                 finish();
@@ -147,7 +139,7 @@ public class SearchActivity extends Activity {
                         try {
                             Gson g = new Gson();
                             end = g.fromJson(enderecoResponse, Endereco.class);
-
+                            confirmar();
                             Log.e("NETFLIX",enderecoResponse);
                             Log.e("NETFLIX","cidade: "+end.toString());
 
@@ -165,8 +157,8 @@ public class SearchActivity extends Activity {
     }
 
 
-    //AQUI LE O ARQUIVO DE TEXTO
-    public void confirmar(View view) {
+
+    public void confirmar() {
         Log.e("BANANA","lat"+lat+"long"+lon+"cep"+cep);
         //
         //cria a nova activiy

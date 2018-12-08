@@ -23,16 +23,18 @@
             android:layout_margin="10dp"
             android:text="Marque qual atributo deseja incluir em sua busca e defina o grau de importancia dele."
             />
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="Digite sua rua."
-            android:id="@+id/endereco"
-            android:layout_below="@id/ajuda"
-            android:imeOptions="actionDone"
-            android:singleLine="true"
-            />
+
+            <fragment
+                android:id="@+id/endereco"
+                android:layout_below="@id/ajuda"
+                android:layout_margin="10dp"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                />
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

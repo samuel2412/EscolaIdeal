@@ -9,43 +9,10 @@
     android:layout_margin="20dp"
     tools:context="com.example.samuel.escolaideal.SearchActivity">
 
-    <TextView
-        android:id="@+id/textoTeste"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:textSize="30dp"
-        android:text="Confirme seu CEP"
-        />
-
-    <Button
-        android:id="@+id/hint"
-       android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/textoTeste"
-
-        android:text="\?" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/enderecoConfirm"
-        android:layout_below="@id/textoTeste"
-
-        />
-
-    <Button
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:clickable="false"
-        android:onClick="confirmar"
-        android:id="@+id/confirmar"
-        android:text="Confirmar"
-        />
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>
 

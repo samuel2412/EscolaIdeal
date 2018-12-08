@@ -13,6 +13,11 @@
         android:label="@string/app_name"
         android:theme="@style/NewTheme">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDE73gql9gPc_-LSVwOrBSYY6NTJROMUk0"/>
+
+
         <!-- Splash screen -->
         <activity
             android:name=".SplashScreenActivity"

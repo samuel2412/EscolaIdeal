@@ -3,30 +3,58 @@ package com.example.samuel.escolaideal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 public class PesoActivity extends AppCompatActivity {
    private  ArrayList<SeekBar> seekBars;
-    private ArrayList<LinearLayout> ln;
-
-
+   private ArrayList<LinearLayout> ln;
+   private LatLng local;
+   private String localId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peso);
 
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.endereco);
 
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+
+            @Override
+
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                local = place.getLatLng();
+                localId = place.getId();
+                
+                Log.e("ITAU", "Place: " + local);
+            }
+
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.e("ITAU", "errroorroru" );
+                Log.e("AUTOCOMPLETE", "An error occurred: " + status);
+            }
+        });
 
 
         seekBars = getSeekBars();
@@ -228,8 +256,8 @@ public class PesoActivity extends AppCompatActivity {
             values[aux] = seek.getProgress();
             aux++;
         }
-        EditText edittext =  (EditText) findViewById(R.id.endereco);
-        String end = edittext.getText().toString();
+       // EditText edittext =  (EditText) findViewById(R.id.endereco);
+        String end ="aaa";
         if( !(end.equals(""))) {
             //cria a nova activiy
             Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);
@@ -237,7 +265,10 @@ public class PesoActivity extends AppCompatActivity {
             Bundle b = new Bundle();
             b.putBooleanArray("booleanos", boxValues);
             b.putIntArray("pesos", values);
-            b.putString("rua", end);
+
+            b.putDouble("lat",local.latitude);
+            b.putDouble("lon",local.longitude);
+            b.putString("ruaId",localId);
             //Log.e("DPDADM",busca);
             i.putExtras(b);
             //inicia a proxima Activity(ResponseActivity)
