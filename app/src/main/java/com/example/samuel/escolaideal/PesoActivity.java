@@ -56,8 +56,26 @@ public class PesoActivity extends AppCompatActivity {
                 Log.e("ITAU", "errroorroru" );
                 Log.e("AUTOCOMPLETE", "An error occurred: " + status);
             }
-        });
 
+            //@Override
+           // public void on
+        });
+        autocompleteFragment.getView().findViewById(R.id.place_autocomplete_clear_button)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // example : way to access view from PlaceAutoCompleteFragment
+                        // ((EditText) autocompleteFragment.getView()
+                        // .findViewById(R.id.place_autocomplete_search_input)).setText("");
+                        local = null;
+                        localId = null;
+                        Log.e("ITAU", "Place X: " + localId);
+                        Log.e("ITAU", "Place X: " + local);
+                        autocompleteFragment.setText("");
+                        view.setVisibility(View.GONE);
+
+                    }
+                });
 
         setInterface();
         cb.get(0).setChecked(true);

@@ -136,7 +136,7 @@ public class ResponseActivity extends AppCompatActivity {
                 "Ensino Fundamental: ",""+e.isRegFundamental8(),
                 "Ensino Médio: ",""+e.isRegMedioMedio(),
                 "EJA: ",""+e.isEnsinoEja(),
-                "Nota do Enem: ",""+e.getEnemMediaGeral()
+                "Nota do Enem: ",""+ Math.round(e.getEnemMediaGeral())
         };
         e.setAtributos(atributos);
         //Instancia o CardView e seta seus atributos

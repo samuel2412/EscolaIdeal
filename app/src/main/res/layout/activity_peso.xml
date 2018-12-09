@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="10dp"
-                android:text="Entre com o endereço desejado e marque qual atributo deseja incluir em sua busca e defina o grau de importancia dele." />
+                android:textStyle="bold"
+                android:text="Entre com o endereço desejado e marque qual atributo deseja incluir em sua busca e defina o grau de importância dele." />
 
             <fragment
                 android:id="@+id/endereco"
