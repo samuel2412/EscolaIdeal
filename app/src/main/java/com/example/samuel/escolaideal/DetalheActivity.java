@@ -40,7 +40,7 @@ public class DetalheActivity extends AppCompatActivity {
     public void rota(View view){
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                 //Uri.parse("http://maps.google.com/maps?saddr="+lat+"&daddr="+lon));
-                Uri.parse("http://maps.google.com/maps?maps?saddr="+lat+","+lon+"&daddr="+e.getLatitude()+","+e.getLongitude()));
+                Uri.parse("http://maps.google.com/maps?saddr="+lat+","+lon+"&daddr="+e.getLatitude()+","+e.getLongitude()));
         Log.e("MAPA","http://maps.google.com/maps?maps?saddr="+lat+","+lon+"&daddr="+e.getLatitude()+","+e.getLongitude());
         startActivity(intent);
     }
