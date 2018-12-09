@@ -38,7 +38,8 @@
         <!-- Activity Response -->
         <activity
             android:name=".ResponseActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".DetalheActivity" />
         <activity android:name=".PesoActivity" />
     </application>

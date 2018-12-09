@@ -1,15 +1,13 @@
 package com.example.samuel.escolaideal;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,13 +17,16 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.model.LatLng;
 
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
+
 import java.util.ArrayList;
 
 public class PesoActivity extends AppCompatActivity {
-   private  ArrayList<SeekBar> seekBars;
-   private ArrayList<LinearLayout> ln;
+   private  ArrayList<DiscreteSeekBar> seekBars;
+   private ArrayList<CheckBox> cb;
    private LatLng local;
    private String localId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class PesoActivity extends AppCompatActivity {
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.endereco);
 
+
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
 
             @Override
@@ -43,7 +45,7 @@ public class PesoActivity extends AppCompatActivity {
                 // TODO: Get info about the selected place.
                 local = place.getLatLng();
                 localId = place.getId();
-                
+                Log.e("ITAU", "Place: " + localId);
                 Log.e("ITAU", "Place: " + local);
             }
 
@@ -57,46 +59,12 @@ public class PesoActivity extends AppCompatActivity {
         });
 
 
-        seekBars = getSeekBars();
-        ln = getLn();
+        setInterface();
+        cb.get(0).setChecked(true);
 
-        for (SeekBar seekBar : seekBars) {
-            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-                    int val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
-                    TextView textView = (TextView)findViewById(R.id.valor);
-                    RelativeLayout.LayoutParams params= new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                   // ViewGroup vc = (ViewGroup)findViewById(R.id.teste);
-                    //vc.getChildAt((seekBars.indexOf(seekBar)+2)).getId(
-                    params.addRule(RelativeLayout.ABOVE, ln.get( seekBars.indexOf(seekBar) ).getId() );
-                    textView.setLayoutParams(params);
-
-                    String x = "" + (progress/100000)+"%";
-                    textView.setText(x);
-                    textView.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
-                    //textView.setY(100); just added a value set this properly using screen with height aspect ratio , if you do not set it by default it will be there below seek bar
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-
-                }
-            });
-
-
-        }
     }
 
-    public ArrayList<LinearLayout> getLn() {
+   /* public ArrayList<LinearLayout> getLn() {
         ArrayList<LinearLayout> seekers = new ArrayList<LinearLayout>();
         //cria/adiciona os SeekBar no ArrayList
         seekers.add((LinearLayout) findViewById(R.id.layoutPeso1));
@@ -140,56 +108,75 @@ public class PesoActivity extends AppCompatActivity {
         seekers.add((LinearLayout) findViewById(R.id.layoutPeso39));
 
         return seekers;
-    }
+    }*/
 
-    public ArrayList<SeekBar> getSeekBars() {
-        ArrayList<SeekBar> seekers = new ArrayList<SeekBar>();
+    public void setInterface() {
+        seekBars = new ArrayList<DiscreteSeekBar>();
+        cb = new ArrayList<CheckBox>();
+        LinearLayout rl = (LinearLayout) findViewById(R.id.ln);
+        String[] nomes= {
+                "Distancia","Quadra Coberta","Dependências PNE","Laboratório de Informática","Laboratório de Ciências"
+                ,"Energia Pública","Água Filtrada","Pátio Coberto","Berçário","Sala de Professores","Cantina"
+                ,"Quadra descoberta","Biblioteca","Sala de Leitura","Sanitários PNE","Auditório"
+                ,"Computadores","Parque Infantil","Pátio Descoberto","Refeitório","Sanitário Fora do Prédio"
+                ,"Sanitário Dentro do Prédio","Internet","Regime Pré-Escola","Regime Fundamental","Regime Médio"
+                ,"Regime Médio Profissional","Ensino EJA Fundamental","Ensino EJA para o jovem","Especial Creche"
+                ,"Especial EJA Fundamental","Especial EJA Médio","Especial Médio Integrado","Especial Médio"
+                ,"Especial Médio Profissional","Especial Pré-escola","Enem"
+        } ;
+
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(50, 0, 50, 30);
+
+        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params2.setMargins(30, 0, 0, 0);
+
+
+
         //cria/adiciona os SeekBar no ArrayList
-        seekers.add((SeekBar) findViewById(R.id.op1Peso));
-        seekers.add((SeekBar) findViewById(R.id.op2Peso));
-        seekers.add((SeekBar) findViewById(R.id.op3Peso));
-        seekers.add((SeekBar) findViewById(R.id.op4Peso));
-        seekers.add((SeekBar) findViewById(R.id.op5Peso));
-        seekers.add((SeekBar) findViewById(R.id.op6Peso));
-        seekers.add((SeekBar) findViewById(R.id.op7Peso));
-        seekers.add((SeekBar) findViewById(R.id.op8Peso));
-        seekers.add((SeekBar) findViewById(R.id.op9Peso));
-        seekers.add((SeekBar) findViewById(R.id.op10Peso));
-        seekers.add((SeekBar) findViewById(R.id.op11Peso));
-        seekers.add((SeekBar) findViewById(R.id.op12Peso));
-        seekers.add((SeekBar) findViewById(R.id.op13Peso));
-        seekers.add((SeekBar) findViewById(R.id.op14Peso));
-        seekers.add((SeekBar) findViewById(R.id.op15Peso));
-        seekers.add((SeekBar) findViewById(R.id.op16Peso));
-        seekers.add((SeekBar) findViewById(R.id.op17Peso));
-        seekers.add((SeekBar) findViewById(R.id.op18Peso));
-        seekers.add((SeekBar) findViewById(R.id.op19Peso));
-        seekers.add((SeekBar) findViewById(R.id.op20Peso));
-        seekers.add((SeekBar) findViewById(R.id.op21Peso));
-        seekers.add((SeekBar) findViewById(R.id.op22Peso));
-        seekers.add((SeekBar) findViewById(R.id.op23Peso));
-        seekers.add((SeekBar) findViewById(R.id.op24Peso));
-        seekers.add((SeekBar) findViewById(R.id.op25Peso));
-        seekers.add((SeekBar) findViewById(R.id.op26Peso));
-        seekers.add((SeekBar) findViewById(R.id.op27Peso));
-        seekers.add((SeekBar) findViewById(R.id.op28Peso));
-        seekers.add((SeekBar) findViewById(R.id.op29Peso));
-        seekers.add((SeekBar) findViewById(R.id.op30Peso));
-        seekers.add((SeekBar) findViewById(R.id.op31Peso));
-        seekers.add((SeekBar) findViewById(R.id.op32Peso));
-        seekers.add((SeekBar) findViewById(R.id.op33Peso));
-        seekers.add((SeekBar) findViewById(R.id.op34Peso));
-        seekers.add((SeekBar) findViewById(R.id.op35Peso));
-        seekers.add((SeekBar) findViewById(R.id.op36Peso));
-        seekers.add((SeekBar) findViewById(R.id.op37Peso));
-        seekers.add((SeekBar) findViewById(R.id.op38Peso));
-        seekers.add((SeekBar) findViewById(R.id.op39Peso));
+        for(int i=0;i<nomes.length;i++) {
+            DiscreteSeekBar dsb = new DiscreteSeekBar(this);
+            dsb.setMax(100);
+            LinearLayout combo = new LinearLayout(this);
+            combo.setOrientation(LinearLayout.HORIZONTAL);
 
-        return seekers;
+            CheckBox checkBox = new CheckBox(this);
+
+            TextView tv = new TextView(this);
+            tv.setText(nomes[i]);
+            tv.setTypeface(null, Typeface.BOLD);
+
+            combo.setLayoutParams(params2);
+            dsb.setLayoutParams(params);
+
+            //checkBox.setId(i+(nomes.length*2));
+            //tv.setId(i+nomes.length);
+            //dsb.setId(i);
+
+            combo.addView(checkBox);
+            combo.addView(tv);
+
+            cb.add(checkBox);
+            seekBars.add(dsb);
+
+
+            rl.addView(combo);
+            rl.addView(dsb);
+
+
+        }
+
     }
 
     public void next(View view) {
-        ArrayList<CheckBox> boxs = new ArrayList<CheckBox>();
+       /* ArrayList<CheckBox> boxs = new ArrayList<CheckBox>();
         boxs.add((CheckBox) findViewById(R.id.box1));
         boxs.add((CheckBox) findViewById(R.id.box2));
         boxs.add((CheckBox) findViewById(R.id.box3));
@@ -232,11 +219,11 @@ public class PesoActivity extends AppCompatActivity {
         boxs.add((CheckBox) findViewById(R.id.box37));
         boxs.add((CheckBox) findViewById(R.id.box38));
         boxs.add((CheckBox) findViewById(R.id.box39));
+*/
 
-
-        boolean boxValues [] = new boolean[boxs.size()];
+        boolean boxValues [] = new boolean[cb.size()];
         int aux=0;
-        for(CheckBox cb: boxs){
+        for(CheckBox cb: cb){
             if(cb.isChecked()){
                 boxValues[aux]=true;
             }else{
@@ -247,18 +234,15 @@ public class PesoActivity extends AppCompatActivity {
 
 
 
-
-
-
         int values[] = new int[seekBars.size()];
         aux=0;
-        for(SeekBar seek:seekBars){
-            values[aux] = seek.getProgress();
+        for(DiscreteSeekBar seek:seekBars){
+            values[aux] = seek.getProgress()*100000;
             aux++;
         }
        // EditText edittext =  (EditText) findViewById(R.id.endereco);
-        String end ="aaa";
-        if( !(end.equals(""))) {
+
+        try{
             //cria a nova activiy
             Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);
             //cria o bundle que carrega a String da busca
@@ -274,8 +258,8 @@ public class PesoActivity extends AppCompatActivity {
             //inicia a proxima Activity(ResponseActivity)
             startActivity(i);
 
-        }else{
-            Toast.makeText(this,"Insira sua rua",Toast.LENGTH_LONG).show();
+        }catch(NullPointerException e){
+            Toast.makeText(this,"Insira uma rua.",Toast.LENGTH_LONG).show();
         }
 
     }

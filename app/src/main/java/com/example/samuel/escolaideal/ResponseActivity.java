@@ -80,6 +80,16 @@ public class ResponseActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ResponseActivity.this, PesoActivity.class);
+
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(i);
+    }
+
+
 
     public void setInterface(){
 
@@ -120,15 +130,13 @@ public class ResponseActivity extends AppCompatActivity {
         final int codigo = e.getCod();// pega o codigo da escola para passar atras de bundle para o DetalheActivity
         //Vetor com as strings que estarão contidas no CardView
         String[] atributos={
-                "Ano do Censo: ", String.valueOf(e.getAnoCenso()),
-                "Código: ", String.valueOf(e.getCod()),
-                "Código da Cidade: ",String.valueOf(e.getCodMunicipio()),
-                "Dependência Administrativa: ",e.getDependenciaAdministrativaTxt(),
-                "Cidade: ",e.getCidade(),
-                "Estado: ",e.getEstado(),
-                "IDEB Ano Inicial: ",String.valueOf(e.getIdebAI()),
-                "IDEB Ano Final: ",String.valueOf(e.getIdebAF()),
-                "Média Geral no Enem: ",String.valueOf(e.getEnemMediaGeral())
+                "Município: ",e.getNomeMunicipio(),
+                "Dependencia Administrativa: ",e.getDependenciaAdministrativaTxt(),
+                "Creche: ",""+e.isRegCreche(),
+                "Ensino Fundamental: ",""+e.isRegFundamental8(),
+                "Ensino Médio: ",""+e.isRegMedioMedio(),
+                "EJA: ",""+e.isEnsinoEja(),
+                "Nota do Enem: ",""+e.getEnemMediaGeral()
         };
         e.setAtributos(atributos);
         //Instancia o CardView e seta seus atributos
@@ -212,31 +220,8 @@ public class ResponseActivity extends AppCompatActivity {
 
 
     }
-   /* String post() throws IOException {
-       MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-        String url ="https://a5fui2lw3d.execute-api.us-east-1.amazonaws.com/demo/teste";
-        String json ="{" +
-                        "'queryStringParameters':" +
-                            "{" +
-                                "'m_nomeMunicipio': '\'Guarulhos\''," +
-                                "'e_situacaoFuncionamento': '1'," +
-                                "'e_cozinha': '0'" +
-                            "}" +
-                        "}";
-        RequestBody body = RequestBody.create(JSON, json);
-        Request request = new Request.Builder()
-                .url(url)
-                .post(body)
-                .build();
-        Response response = client.newCall(request).execute();
-        return response.body().string();}*/
 
     void run() throws IOException {
-        //ProgressBar pb = new ProgressBar(this);
-        //linearLayout.addView(pb);
-
-
-        //String BASE_URL = "https://a5fui2lw3d.execute-api.us-east-1.amazonaws.com/demo/teste";
 
         OkHttpClient client = new OkHttpClient();
 
@@ -320,9 +305,9 @@ public class ResponseActivity extends AppCompatActivity {
                                 //e.setCodUf(escola.getInt("codEstado"));
                                // e.setSiglaUf(escola.getString("sigla"));
                                 e.setCodMunicipio(escola.getInt("codMunicipio"));
-                                e.setNomeMunicipio(escola.getString("nomeDistrito"));
+                                e.setNomeMunicipio(escola.getString("nomeMunicipio"));
                                 e.setCodDistrito(escola.getInt("codDistrito"));
-                                e.setNomeMunicipio(escola.getString("nomeDistrito"));
+                                e.setNomeDistrito(escola.getString("nomeDistrito"));
                                 //e.setRegiao(escola.getString("regiao"));
                                 e.setDependenciaAdministrativa(escola.getInt("dependenciaAdiministrativa"));
                                 e.setTipoLocalizacao(escola.getInt("tipoLocalizacao"));

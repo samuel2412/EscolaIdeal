@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class DetalheActivity extends AppCompatActivity {
     private Escola e;
-    double lat,lon;
+    private double lat,lon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
