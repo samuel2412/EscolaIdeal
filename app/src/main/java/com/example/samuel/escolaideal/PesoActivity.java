@@ -64,51 +64,6 @@ public class PesoActivity extends AppCompatActivity {
 
     }
 
-   /* public ArrayList<LinearLayout> getLn() {
-        ArrayList<LinearLayout> seekers = new ArrayList<LinearLayout>();
-        //cria/adiciona os SeekBar no ArrayList
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso1));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso2));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso3));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso4));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso5));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso6));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso7));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso8));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso9));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso10));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso11));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso12));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso13));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso14));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso15));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso16));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso17));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso18));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso19));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso20));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso21));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso22));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso23));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso24));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso25));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso26));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso27));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso28));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso29));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso30));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso31));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso32));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso33));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso34));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso35));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso36));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso37));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso38));
-        seekers.add((LinearLayout) findViewById(R.id.layoutPeso39));
-
-        return seekers;
-    }*/
 
     public void setInterface() {
         seekBars = new ArrayList<DiscreteSeekBar>();
@@ -176,51 +131,6 @@ public class PesoActivity extends AppCompatActivity {
     }
 
     public void next(View view) {
-       /* ArrayList<CheckBox> boxs = new ArrayList<CheckBox>();
-        boxs.add((CheckBox) findViewById(R.id.box1));
-        boxs.add((CheckBox) findViewById(R.id.box2));
-        boxs.add((CheckBox) findViewById(R.id.box3));
-        boxs.add((CheckBox) findViewById(R.id.box4));
-        boxs.add((CheckBox) findViewById(R.id.box5));
-        boxs.add((CheckBox) findViewById(R.id.box6));
-        boxs.add((CheckBox) findViewById(R.id.box7));
-        boxs.add((CheckBox) findViewById(R.id.box8));
-        boxs.add((CheckBox) findViewById(R.id.box9));
-        boxs.add((CheckBox) findViewById(R.id.box10));
-
-        boxs.add((CheckBox) findViewById(R.id.box11));
-        boxs.add((CheckBox) findViewById(R.id.box12));
-        boxs.add((CheckBox) findViewById(R.id.box13));
-        boxs.add((CheckBox) findViewById(R.id.box14));
-        boxs.add((CheckBox) findViewById(R.id.box15));
-        boxs.add((CheckBox) findViewById(R.id.box16));
-        boxs.add((CheckBox) findViewById(R.id.box17));
-        boxs.add((CheckBox) findViewById(R.id.box18));
-        boxs.add((CheckBox) findViewById(R.id.box19));
-        boxs.add((CheckBox) findViewById(R.id.box20));
-
-        boxs.add((CheckBox) findViewById(R.id.box21));
-        boxs.add((CheckBox) findViewById(R.id.box22));
-        boxs.add((CheckBox) findViewById(R.id.box23));
-        boxs.add((CheckBox) findViewById(R.id.box24));
-        boxs.add((CheckBox) findViewById(R.id.box25));
-        boxs.add((CheckBox) findViewById(R.id.box26));
-        boxs.add((CheckBox) findViewById(R.id.box27));
-        boxs.add((CheckBox) findViewById(R.id.box28));
-        boxs.add((CheckBox) findViewById(R.id.box29));
-        boxs.add((CheckBox) findViewById(R.id.box30));
-
-        boxs.add((CheckBox) findViewById(R.id.box31));
-        boxs.add((CheckBox) findViewById(R.id.box32));
-        boxs.add((CheckBox) findViewById(R.id.box33));
-        boxs.add((CheckBox) findViewById(R.id.box34));
-        boxs.add((CheckBox) findViewById(R.id.box35));
-        boxs.add((CheckBox) findViewById(R.id.box36));
-        boxs.add((CheckBox) findViewById(R.id.box37));
-        boxs.add((CheckBox) findViewById(R.id.box38));
-        boxs.add((CheckBox) findViewById(R.id.box39));
-*/
-
         boolean boxValues [] = new boolean[cb.size()];
         int aux=0;
         for(CheckBox cb: cb){
@@ -240,7 +150,7 @@ public class PesoActivity extends AppCompatActivity {
             values[aux] = seek.getProgress()*100000;
             aux++;
         }
-       // EditText edittext =  (EditText) findViewById(R.id.endereco);
+
 
         try{
             //cria a nova activiy

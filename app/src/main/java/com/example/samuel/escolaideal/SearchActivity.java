@@ -62,16 +62,7 @@ public class SearchActivity extends Activity {
     public void getCep(){
         boolean check=false;
         try {
-           /* List<Address> addresses = geocoder.getFromLocationName(rua, 10);
-
-            if (addresses != null && !addresses.isEmpty()) {
-
-
-                Address address = addresses.get(0);
-
-                lat = address.getLatitude();
-                lon = address.getLongitude();
-        */
+          
             List<Address> addresses = geocoder.getFromLocation(lat,lon, 10);
             if (addresses != null && !addresses.isEmpty()) {
                 String primeiro= addresses.get(0).getPostalCode();
