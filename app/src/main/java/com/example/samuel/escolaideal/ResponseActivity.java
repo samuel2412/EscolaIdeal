@@ -141,7 +141,7 @@ public class ResponseActivity extends AppCompatActivity {
                 "Ensino Fundamental: ",(e.isRegFundamental8()? "Sim"  :"Não"    ),
                 "Ensino Médio: ",(e.isRegMedioMedio()? "Sim"  :"Não"    ),
                 "EJA: ",(e.isEnsinoEja()? "Sim"  :"Não"    ),
-                "Nota do Enem: ",""+ Math.round(e.getEnemMediaGeral()),
+                "Média Geral no Enem: ",""+ Math.round(e.getEnemMediaGeral()),
                 "Endereço: ",(e.getEndereco().startsWith("***")? "Endereço Não Informado": e.getEndereco()    )  ,
                 "Computadores: ", (e.getComputadores()? "Sim"  :"Não"    ),
                 "Biblioteca: ", (e.isBiblioteca()? "Sim"  :"Não"    ),

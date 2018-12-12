@@ -97,7 +97,7 @@ public class PesoActivity extends AppCompatActivity {
                 "Regime Médio", "Regime Médio Integral", "Regime Médio Médio", "Ensino EJA Fundamental",
                 "Ensino EJA Médio", "Ensino EJA Para o Jovem", "Especial Creche", "Especial EJA Fundamental",
                 "Especial EJA Médio", "Especial Médio Integrado", "Especial Médio Médio", "Especial Médio",
-                "Especial Médio Profissional","Especial Pré-escola", "Enem"
+                "Especial Médio Profissional","Especial Pré-escola", "Média Geral no Enem"
         };
 
 

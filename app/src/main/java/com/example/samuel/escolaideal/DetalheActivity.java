@@ -9,6 +9,7 @@ import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -47,8 +48,13 @@ public class DetalheActivity extends AppCompatActivity {
     public void setTela(){
         try {
             TextView textoInterior = (TextView) findViewById(R.id.DetalheText);
-            textoInterior.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(50, 50, 50, 10);
+            textoInterior.setLayoutParams(params);
             //recebe vetor de strings com os atributos parceados para string
             String[] atributos = e.getAtributos();
 
