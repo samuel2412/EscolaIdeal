@@ -24,6 +24,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.matheus.coordenadas.principal.Local;
@@ -41,10 +42,10 @@ public class ResponseActivity extends AppCompatActivity {
     private List<Escola> listaEscola=new ArrayList<Escola>();
 
 
-    boolean boxValues [];
-    int values[];
-    double lat,lon;
-    String codMunicipio="";
+    private boolean boxValues [];
+    private int values[];
+    private double lat,lon;
+    private String codMunicipio="";
 
 
 
@@ -65,6 +66,10 @@ public class ResponseActivity extends AppCompatActivity {
 
         boxValues = extras.getBooleanArray("booleanos");
         values = extras.getIntArray("pesos");
+
+        Log.e("VETORES", "ResponseA ao receber     "+ Arrays.toString(boxValues)+"\n"+Arrays.toString(values));
+
+
         lat = extras.getDouble("lat");
         lon = extras.getDouble("lon");
         codMunicipio = extras.getString("municipio");
@@ -132,11 +137,22 @@ public class ResponseActivity extends AppCompatActivity {
         String[] atributos={
                 "Município: ",e.getNomeMunicipio(),
                 "Dependencia Administrativa: ",e.getDependenciaAdministrativaTxt(),
-                "Creche: ",""+e.isRegCreche(),
-                "Ensino Fundamental: ",""+e.isRegFundamental8(),
-                "Ensino Médio: ",""+e.isRegMedioMedio(),
-                "EJA: ",""+e.isEnsinoEja(),
-                "Nota do Enem: ",""+ Math.round(e.getEnemMediaGeral())
+                "Creche: ",(e.isRegCreche()? "Sim"  :"Não"    ),
+                "Ensino Fundamental: ",(e.isRegFundamental8()? "Sim"  :"Não"    ),
+                "Ensino Médio: ",(e.isRegMedioMedio()? "Sim"  :"Não"    ),
+                "EJA: ",(e.isEnsinoEja()? "Sim"  :"Não"    ),
+                "Nota do Enem: ",""+ Math.round(e.getEnemMediaGeral()),
+                "Endereço: ",(e.getEndereco().startsWith("***")? "Endereço Não Informado": e.getEndereco()    )  ,
+                "Computadores: ", (e.getComputadores()? "Sim"  :"Não"    ),
+                "Biblioteca: ", (e.isBiblioteca()? "Sim"  :"Não"    ),
+                "Quadra Coberta: ", (e.isQuadraCoberta()? "Sim"  :"Não"    ),
+                "Internet: ",(e.isInternet()? "Sim"  :"Não"    ),
+                "Auditório: ",(e.isAuditorio()? "Sim"  :"Não"    ),
+                "Sala de Leitura: ",(e.isSalaLeitura()? "Sim"  :"Não"    ),
+                "Laboratório de Ciências:  ",(e.isLaboratorioCiencias()? "Sim"  :"Não"    ),
+                "Laboratório de Informática:  ",(e.isLaboratorioInformatica()? "Sim"  :"Não"    ),
+                "Refeitório: ", (e.isRefeitorio() ? "Sim"  :"Não"    ),
+
         };
         e.setAtributos(atributos);
         //Instancia o CardView e seta seus atributos
@@ -169,7 +185,7 @@ public class ResponseActivity extends AppCompatActivity {
         TextView textoInterior = new TextView(this);
         textoInterior.setLayoutParams(new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
-        for(int i=0;i<atributos.length;i+=2){
+        for(int i=0;i<14;i+=2){
             //Forma a String que sera exibida, deixando o nome dos atributos em negrito e o atributo não.
             SpannableStringBuilder str = new SpannableStringBuilder(atributos[i]+atributos[i+1]+System.getProperty("line.separator"));
             str.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, atributos[i].length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -373,7 +389,7 @@ public class ResponseActivity extends AppCompatActivity {
                                 e.setDatashows(escola.getInt("datashows"));
                                 e.setFax(escola.getInt("fax"));
                                 e.setFoto(escola.getInt("foto"));
-                                e.setComputadores(escola.getInt("computadores"));
+                                e.setComputadores(escola.getInt("computadores") > 0 ? true : false);
                                 e.setComputadoresAdm(escola.getInt("computadoresAdm"));
                                 e.setComputadoresAlunos(escola.getInt("computadoresAlunos"));
                                 e.setInternet(converteBoolean(""+escola.getInt("internet")));
@@ -476,24 +492,38 @@ public class ResponseActivity extends AppCompatActivity {
             int selecionados[ ] = new int [ 36 ];
             int prioridades[ ] = new int[ 36 ];
 
+            Log.e("VETORES", "ResponseA no achar melhor     "+Arrays.toString(boxValues)+"\n"+Arrays.toString(values));
+
 
 
             for( i = 1 ; i < boxValues.length ; i++ )
             {
-                if( boxValues[ i ]==true )
+                Log.e("chaves",""+i);
+
+                if( boxValues[ i-1 ]==true )
                 {
+                    Log.e("chaves",""+i);
                     selecionados[ j ] = i;
                     prioridades[ j ] = values[ i - 1 ];
+                    Log.e("VETORES","DASDASJDANSN     "+prioridades[j]+"              "+ values[i-1]  );
                     j++;
                 }
             }
 
             //	Method metodos [ ] = classe.getMethods( );
 
-            for( int ct = 0 ; ct < selecionados.length ; ct++ ) {
+            for( int ct = 0 ; ct < selecionados.length && ( selecionados[ ct ] != 0 ); ct++ ) //Verifica se ct eh menor q o tamanho do vetor e se n vai comparar com algo null
+            {
 
-                Method m = classe.getMethod(  DicionarioMetodos.CHAVES.get( selecionados[ ct ] ) , boolean.class );
-                m.invoke( escolaIdeal , true );
+
+
+                    if (selecionados[ct] != 1) //se for selecionado o distancia ignora ele, só os outros são executados
+                    {
+                        Method m = classe.getMethod(DicionarioMetodos.CHAVES.get(selecionados[ct]), boolean.class);
+                        m.invoke(escolaIdeal, true);
+
+                    }
+
             }// Fim do for
 
             //Aqui vai carregar o banco
@@ -503,11 +533,20 @@ public class ResponseActivity extends AppCompatActivity {
 
             // List< Escola > lista = dao.consulta( 35 );//Estado de SP
             System.err.println( "Consultou" );
-
+            Log.e("ORDEM",Arrays.toString(prioridades));
             //Aqui Chama a classe knn
             Knn ia = new Knn( listaEscola , escolaIdeal , prioridades , selecionados , l );
 
             Escola[ ] ordem = ia.classificacao( );
+            double euclidiana[ ] = ia.euclidiana();
+
+            String teste="blabla \n";
+
+            for(int o=0;o<ordem.length;o++){
+                teste+= euclidiana[o]+"    "+ordem[o].getNome()+"\n";
+            }
+
+            Log.e("ORDEM",teste);
             //ia.melhorEscola( );
 
             ArrayList<Escola> ordenado = new ArrayList<Escola>();
@@ -529,7 +568,7 @@ public class ResponseActivity extends AppCompatActivity {
             }
             */
         }catch (Exception ex){
-            Log.e("NETFLIX",ex.getMessage());
+            Log.e("KNN", "exception", ex);
         }
     }
 }

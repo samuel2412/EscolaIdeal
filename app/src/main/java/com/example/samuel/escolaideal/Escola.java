@@ -8,7 +8,7 @@ public class Escola implements Serializable {
     private String[] atributos;
     private int anoCenso,cod,situacaoFuncionamento,situacaoCenso,codUf,codMunicipio,codDistrito,tipoLocalizacao,
             regulamentada,salasExistentes,salasUtilizadas,televisores,videoCassetes,dvds,parabolicas,aparelhosSom,datashows,fax,
-            foto,computadores,computadoresAdm,computadoresAlunos,funcionarios,
+            foto,computadoresAdm,computadoresAlunos,funcionarios,
             copiadoras,retroprojetores,impressoras,atividadeComplementar,dependenciaAdministrativa;
     private String nome,cidade,estado,regiao,situacaoFuncionamentoTxt,dependenciaAdministrativaTxt,
             inicioAno,fimAno,siglaUf,nomeMunicipio,nomeDistrito,endereco,nomeTitulo,
@@ -23,7 +23,7 @@ public class Escola implements Serializable {
             regFundamental8,regFundamental9,regMedioMedio,regMedioIntegrado,regMedioNormal,regMedioProfissional,ensinoEspecial,
             espCreche,espPreescola,espFundamental8,espFundamental9,espMedioMedio,espMedioIntegrado,espMedioNormal,
             espMedioProfissional,espEjaFundamental,espEjaMedio,ensinoEja,ejaFundamental,ejaMedio,ejaProjovem,ciclos,fimDeSemana
-            ,pedagogiaAlternancia;
+            ,pedagogiaAlternancia,computadores;
     private double idebAI,idebAF,enemMediaGeral,enemMediaObjetiva,formacaoDocente,enemPortugues,enemMatematica,enemHumanas
             ,enemNaturais,enemRedacao,latitude,longitude , distancia;
 
@@ -514,7 +514,7 @@ public class Escola implements Serializable {
         return foto;
     }
 
-    public int getComputadores() {
+    public boolean getComputadores() {
         return computadores;
     }
 
@@ -1034,7 +1034,7 @@ public class Escola implements Serializable {
         this.foto = foto;
     }
 
-    public void setComputadores(int computadores) {
+    public void setComputadores(boolean computadores) {
         this.computadores = computadores;
     }
 

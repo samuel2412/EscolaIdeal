@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PesoActivity extends AppCompatActivity {
    private  ArrayList<DiscreteSeekBar> seekBars;
@@ -88,16 +89,19 @@ public class PesoActivity extends AppCompatActivity {
         cb = new ArrayList<CheckBox>();
         LinearLayout rl = (LinearLayout) findViewById(R.id.ln);
         String[] nomes= {
-                "Distancia","Quadra Coberta","Dependências PNE","Laboratório de Informática","Laboratório de Ciências"
-                ,"Energia Pública","Água Filtrada","Pátio Coberto","Berçário","Sala de Professores","Cantina"
-                ,"Quadra descoberta","Biblioteca","Sala de Leitura","Sanitários PNE","Auditório"
-                ,"Computadores","Parque Infantil","Pátio Descoberto","Refeitório","Sanitário Fora do Prédio"
-                ,"Sanitário Dentro do Prédio","Internet","Regime Pré-Escola","Regime Fundamental","Regime Médio"
-                ,"Regime Médio Profissional","Ensino EJA Fundamental","Ensino EJA para o jovem","Especial Creche"
-                ,"Especial EJA Fundamental","Especial EJA Médio","Especial Médio Integrado","Especial Médio"
-                ,"Especial Médio Profissional","Especial Pré-escola","Enem"
-        } ;
+                "Distância", "Laboratório de Ciências", "Laboratório de Informática",
+                "Quadra Coberta", "Quadra Descoberta", "Biblioteca", "Sala de Leitura",
+                "Sanitários PNE", "Dependências PNE", "Auditório", "Computadores", "Parque Infantil",
+                "Pátio Coberto", "Pátio Descoberto", "Refeitório", "Sanitário Fora do Prédio",
+                "Sanitário Dentro do Prédio", "Internet", "Regime Pré-Escola", "Regime Fundamental",
+                "Regime Médio", "Regime Médio Integral", "Regime Médio Médio", "Ensino EJA Fundamental",
+                "Ensino EJA Médio", "Ensino EJA Para o Jovem", "Especial Creche", "Especial EJA Fundamental",
+                "Especial EJA Médio", "Especial Médio Integrado", "Especial Médio Médio", "Especial Médio",
+                "Especial Médio Profissional","Especial Pré-escola", "Enem"
+        };
 
+
+        Log.e("ORDEM",nomes.length+"");
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -165,7 +169,7 @@ public class PesoActivity extends AppCompatActivity {
         int values[] = new int[seekBars.size()];
         aux=0;
         for(DiscreteSeekBar seek:seekBars){
-            values[aux] = seek.getProgress()*100000;
+            values[aux] = 1+ (seek.getProgress()*100000);
             aux++;
         }
 
@@ -175,6 +179,8 @@ public class PesoActivity extends AppCompatActivity {
             Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);
             //cria o bundle que carrega a String da busca
             Bundle b = new Bundle();
+            Log.e("VETORES", "PesoA     "+Arrays.toString(boxValues)+"\n"+Arrays.toString(values));
+
             b.putBooleanArray("booleanos", boxValues);
             b.putIntArray("pesos", values);
 

@@ -7,9 +7,13 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.google.gson.Gson;
+
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -66,6 +70,7 @@ public class SearchActivity extends Activity {
             List<Address> addresses = geocoder.getFromLocation(lat,lon, 10);
             if (addresses != null && !addresses.isEmpty()) {
                 String primeiro= addresses.get(0).getPostalCode();
+                Log.e("Matheus", "primeiro    "+primeiro);
                 if(primeiro.length()<9) {
                     int aux =1;
                     while(!check && aux<addresses.size() ) {
@@ -158,6 +163,9 @@ public class SearchActivity extends Activity {
         Bundle b = new Bundle();
         b.putDouble("lat",lat);
         b.putDouble("lon",lon);
+
+        Log.e("VETORES", "SearchA     "+ Arrays.toString(boxValues)+"\n"+Arrays.toString(values));
+
         b.putBooleanArray("booleanos",boxValues);
         b.putIntArray("pesos",values);
         b.putString("municipio", end.getIbge());

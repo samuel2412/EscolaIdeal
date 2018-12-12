@@ -61,10 +61,10 @@ public class Knn
 							
 						}
 						
-						if( selecionados[ i ] == 35 || selecionados[ i ] == 11 )
+						if( selecionados[ i ] == 35 )//|| selecionados[ i ] == 11 )
 						{
-							if( selecionados[ i ] == 35  )
-							{
+						//	if( selecionados[ i ] == 35  )
+							//{
 								m = classe.getMethod( DicionarioMetodos.CHAVES.get( selecionados[ i ] + 35 )  );
 								//Melhor media do enem
 								respostaEscolaDouble =  1 / ( double ) m.invoke( e );	
@@ -72,7 +72,7 @@ public class Knn
 						//	respostaListaDouble = ( double ) m.invoke( e , null );
 							
 								somador += prioridade[ i ] * Math.pow( respostaEscolaDouble , 2 );
-							}
+							//}
 						}
 						else
 						{
@@ -130,8 +130,8 @@ public class Knn
 	}
 	
 	//Retorrna a melhor escola de acordo ao algoritmo de inteligencia artifical
-	public void melhorEscola( )
-	{
-		System.out.println( classificacao[ 0 ] );
-	}
+	public void melhorEscola( ) { System.out.println( classificacao[ 0 ] ); }
+
+
+
 }//Fim da classe

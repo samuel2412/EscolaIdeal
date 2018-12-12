@@ -46,7 +46,32 @@ public class SplashScreenActivity extends AppCompatActivity{
 
                     //se tiver conexao inicia a proxima activity
                     Intent i = new Intent(SplashScreenActivity.this, PesoActivity.class);
-                    startActivity(i);
+                   startActivity(i);
+
+                    /*Intent i = new android.content.Intent(SplashScreenActivity.this, ResponseActivity.class);
+                    //cria o bundle que carrega a String da busca
+                    Bundle b = new Bundle();
+                    b.putDouble("lat",-23.4890395);
+                    b.putDouble("lon",-46.47390889999999);
+                    boolean boxValues[] = new boolean[30];
+                    int values[] = new int[30];
+                    boxValues[0] = true;
+                    values[0]= 100*100000;
+                    for(int x=1;x<boxValues.length;x++){
+                        if(Math.random()<0.5){
+                            boxValues[x]=true;
+                            values[x]= 100*100000;
+                        }else{
+                           // boxValues[x]=false;
+                            boxValues[x]=true;
+                            values[x]= 100*100000;
+                        }
+                    }
+                    b.putBooleanArray("booleanos",boxValues);
+                    b.putIntArray("pesos",values);
+                    b.putString("municipio", "3550308");
+                    i.putExtras(b);
+                    startActivity(i);*/
 
                     // Fecha esta activity
                     finish();
