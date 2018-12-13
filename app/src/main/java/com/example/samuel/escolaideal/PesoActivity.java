@@ -156,46 +156,53 @@ public class PesoActivity extends AppCompatActivity {
 //metodo que segue para a proxima activity "listener do botao"
     public void next(View view) {
         boolean boxValues [] = new boolean[cb.size()];
+        boolean auxb =false;
         int aux=0;
         for(CheckBox cb: cb){
             if(cb.isChecked()){
                 boxValues[aux]=true;
+                auxb=true;
             }else{
                 boxValues[aux]=false;
             }
             aux++;
         }
+        //verifica se ao menos um peso está selecionado
+        if( auxb  ) {
 
 
+            int values[] = new int[seekBars.size()];
+            aux = 0;
+            for (DiscreteSeekBar seek : seekBars) {
+                values[aux] = 1 + (seek.getProgress() * 100000);
+                aux++;
+            }
 
-        int values[] = new int[seekBars.size()];
-        aux=0;
-        for(DiscreteSeekBar seek:seekBars){
-            values[aux] = 1+ (seek.getProgress()*100000);
-            aux++;
-        }
 
+            try {
+                //cria a nova activiy
+                Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);
+                //cria o bundle que carrega a String da busca
+                Bundle b = new Bundle();
+                Log.e("VETORES", "PesoA     " + Arrays.toString(boxValues) + "\n" + Arrays.toString(values));
 
-        try{
-            //cria a nova activiy
-            Intent i = new android.content.Intent(PesoActivity.this, SearchActivity.class);
-            //cria o bundle que carrega a String da busca
-            Bundle b = new Bundle();
-            Log.e("VETORES", "PesoA     "+Arrays.toString(boxValues)+"\n"+Arrays.toString(values));
+                b.putBooleanArray("booleanos", boxValues);
+                b.putIntArray("pesos", values);
 
-            b.putBooleanArray("booleanos", boxValues);
-            b.putIntArray("pesos", values);
+                b.putDouble("lat", local.latitude);
+                b.putDouble("lon", local.longitude);
+                b.putString("ruaId", localId);
+                //Log.e("DPDADM",busca);
+                i.putExtras(b);
+                //inicia a proxima Activity(ResponseActivity)
+                startActivity(i);
 
-            b.putDouble("lat",local.latitude);
-            b.putDouble("lon",local.longitude);
-            b.putString("ruaId",localId);
-            //Log.e("DPDADM",busca);
-            i.putExtras(b);
-            //inicia a proxima Activity(ResponseActivity)
-            startActivity(i);
+            } catch (NullPointerException e) {
+                Toast.makeText(this, "Insira uma rua.", Toast.LENGTH_LONG).show();
+            }
 
-        }catch(NullPointerException e){
-            Toast.makeText(this,"Insira uma rua.",Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Ao menos um peso deve ser selecionado.", Toast.LENGTH_LONG).show();
         }
 
     }
