@@ -85,6 +85,7 @@ public class ResponseActivity extends AppCompatActivity {
 
 
     }
+    //Sobreescreve o metodo onBackPressed() para que se comporte retornado a PesoActivity, tirando a activity anterior da pilha de execução.
     @Override
     public void onBackPressed() {
         Intent i = new Intent(ResponseActivity.this, PesoActivity.class);
@@ -236,7 +237,7 @@ public class ResponseActivity extends AppCompatActivity {
 
 
     }
-
+//Metodo assíncrono que realiza requisição ao BD hospedado na Amazon.
     void run() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
@@ -263,7 +264,6 @@ public class ResponseActivity extends AppCompatActivity {
 
 
     Log.e("GAP",json);
-
 
 
 
@@ -474,6 +474,7 @@ public class ResponseActivity extends AppCompatActivity {
             }
         });
     }
+    //Metodo usado para converter os valores 1 e 0 para true e false
     private boolean converteBoolean(String value) {
         boolean returnValue = false;
         if ("1".equalsIgnoreCase(value) || "true".equalsIgnoreCase(value) )
@@ -482,7 +483,7 @@ public class ResponseActivity extends AppCompatActivity {
     }
 
 
-
+//metodo que prepara as informações requeridas pelo KNN e as envia pra ele. Depois ela reeorganiza a lista de escolas de acordo com a ordem do KNN.
     public void achaMelhor(){
         try {
             Escola escolaIdeal = new Escola( );
@@ -526,8 +527,6 @@ public class ResponseActivity extends AppCompatActivity {
 
             }// Fim do for
 
-            //Aqui vai carregar o banco
-            // EscolaDAO dao = new EscolaDAO( );
 
 
 

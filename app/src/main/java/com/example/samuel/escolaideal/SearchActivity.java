@@ -22,7 +22,9 @@ import okhttp3.Response;
 
 
 public class SearchActivity extends Activity {
+    //android.geocoder usado para encontrar um CEP aproximado.
     private Geocoder geocoder;
+    //outros atributos relacionados ao endereço
     private String rua="";
     private boolean boxValues [];
     private int values[];
@@ -32,6 +34,7 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        //instancia o geocoder
         geocoder = new Geocoder(this);
         //captura os valores do bundle
         Bundle extras = getIntent().getExtras();
@@ -48,11 +51,11 @@ public class SearchActivity extends Activity {
         }
 
 
-
+        //chama o metodo que localiza um cep aproximado, e depois chama o metodo que envia esse cep para o viaCEP que retorna um json
+        //do endereço, onde é encontrado o ibge( codigo do municipio) usado na requisão ao BD para reduzir a massa de dados
         try {
             getCep();
             run();
-
 
         } catch (Exception e) {
             Log.e("NETFLIX",String.valueOf(e));
@@ -62,15 +65,17 @@ public class SearchActivity extends Activity {
     }
 
 
-
+//metodo que fornece um cep e o cod do municipio
     public void getCep(){
         boolean check=false;
         try {
-          
+          //geocoder gera uma lista com 10 endereços a partir da lat/lon da rua informada pelo usuario.
             List<Address> addresses = geocoder.getFromLocation(lat,lon, 10);
             if (addresses != null && !addresses.isEmpty()) {
                 String primeiro= addresses.get(0).getPostalCode();
                 Log.e("Matheus", "primeiro    "+primeiro);
+                //caso o primeiro elemento não seja valido (possui menos de 9 characteres), será feita uma iteração pela lista
+                //onde será buscado um cep que alem de ter o tamanho correto deverá ter seus primeiros digitos iguais a outro elemento da lista
                 if(primeiro.length()<9) {
                     int aux =1;
                     while(!check && aux<addresses.size() ) {
@@ -109,7 +114,7 @@ public class SearchActivity extends Activity {
 
     }
 
-
+//metodo assíncrono que faz requisição a api viaCEP que após receber um ibge(cod do municipio) chama o metodo que prepara e abre a proxima activty
     void run() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
@@ -135,6 +140,7 @@ public class SearchActivity extends Activity {
                         try {
                             Gson g = new Gson();
                             end = g.fromJson(enderecoResponse, Endereco.class);
+                            //chama metodo que prepara e abre proxima activty
                             confirmar();
                             Log.e("NETFLIX",enderecoResponse);
                             Log.e("NETFLIX","cidade: "+end.toString());
@@ -153,7 +159,7 @@ public class SearchActivity extends Activity {
     }
 
 
-
+//metodo que prepara e abre a proxima activty
     public void confirmar() {
         Log.e("BANANA","lat"+lat+"long"+lon+"cep"+cep);
         //
@@ -178,7 +184,7 @@ public class SearchActivity extends Activity {
         startActivity(i);
     }
 
-
+        //Classe privada endereço. É utlizada quando a requisição para viaCEP obtem uma resposta
         private class Endereco{
 
         private String cep, logradouro, complemento, bairro, localidade, uf, unidade, ibge, gia;

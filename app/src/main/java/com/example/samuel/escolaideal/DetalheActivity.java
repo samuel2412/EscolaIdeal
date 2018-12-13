@@ -38,6 +38,7 @@ public class DetalheActivity extends AppCompatActivity {
         }
 
     }
+    //Inicia o Intent do google maps, passando como paramentro as coordenadas do endereço fornecido pelo usuario e as coordenadas da escola
     public void rota(View view){
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                 //Uri.parse("http://maps.google.com/maps?saddr="+lat+"&daddr="+lon));

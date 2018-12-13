@@ -23,25 +23,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PesoActivity extends AppCompatActivity {
-   private  ArrayList<DiscreteSeekBar> seekBars;
-   private ArrayList<CheckBox> cb;
-   private LatLng local;
-   private String localId;
+   private  ArrayList<DiscreteSeekBar> seekBars; //barras dos valores dos pesos
+   private ArrayList<CheckBox> cb; //check box dos pesos
+   private LatLng local; //latitude e longitude do local inserido pelo usuario
+   private String localId; //String identificadora fornecida pelo google
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peso);
-
+        //instancia um PlaceAutocompleFragment (caixa de digitação de endereço)
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.endereco);
 
-
+        //configura o listener do PlaceAutocompleteFragment
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
 
             @Override
-
+            //Quando um endereço é selecionado, armazena lat/lon e a String idenficadora
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 local = place.getLatLng();
@@ -50,7 +50,7 @@ public class PesoActivity extends AppCompatActivity {
                 Log.e("ITAU", "Place: " + local);
             }
 
-
+        //Quando um erro ocorre
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
@@ -58,16 +58,12 @@ public class PesoActivity extends AppCompatActivity {
                 Log.e("AUTOCOMPLETE", "An error occurred: " + status);
             }
 
-            //@Override
-           // public void on
         });
+        //Sobreescreve o listener do autocomplete para qunado o ususario clicar no X presente no fragmento ele limpe as variaveis que armazenam suas informaoes
         autocompleteFragment.getView().findViewById(R.id.place_autocomplete_clear_button)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // example : way to access view from PlaceAutoCompleteFragment
-                        // ((EditText) autocompleteFragment.getView()
-                        // .findViewById(R.id.place_autocomplete_search_input)).setText("");
                         local = null;
                         localId = null;
                         Log.e("ITAU", "Place X: " + localId);
@@ -78,16 +74,18 @@ public class PesoActivity extends AppCompatActivity {
                     }
                 });
 
-        setInterface();
-        cb.get(0).setChecked(true);
+        setInterface();  //metodo que monta a interface
+        cb.get(0).setChecked(true); //seta distancia como true
 
     }
 
-
+    //metodo que monta a interface
     public void setInterface() {
         seekBars = new ArrayList<DiscreteSeekBar>();
         cb = new ArrayList<CheckBox>();
         LinearLayout rl = (LinearLayout) findViewById(R.id.ln);
+
+        //Nomes dos atributos disponiveis para uso
         String[] nomes= {
                 "Distância", "Laboratório de Ciências", "Laboratório de Informática",
                 "Quadra Coberta", "Quadra Descoberta", "Biblioteca", "Sala de Leitura",
@@ -103,12 +101,14 @@ public class PesoActivity extends AppCompatActivity {
 
         Log.e("ORDEM",nomes.length+"");
 
+        //cria um params para setar as magerns das barras de valores
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
         params.setMargins(50, 0, 50, 30);
 
+        //cria um params para setar as magerns dos textos e checkBox
         LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -119,8 +119,11 @@ public class PesoActivity extends AppCompatActivity {
 
         //cria/adiciona os SeekBar no ArrayList
         for(int i=0;i<nomes.length;i++) {
+            //instacia
             DiscreteSeekBar dsb = new DiscreteSeekBar(this);
+            //seta valor maximo
             dsb.setMax(100);
+            //instancia linear layout em que ficará a barra, o texto e o checkBar desta iteração
             LinearLayout combo = new LinearLayout(this);
             combo.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -130,20 +133,19 @@ public class PesoActivity extends AppCompatActivity {
             tv.setText(nomes[i]);
             tv.setTypeface(null, Typeface.BOLD);
 
+            //seta os params para os layouts
             combo.setLayoutParams(params2);
             dsb.setLayoutParams(params);
 
-            //checkBox.setId(i+(nomes.length*2));
-            //tv.setId(i+nomes.length);
-            //dsb.setId(i);
-
+            //adicionam os layouts no layout pai
             combo.addView(checkBox);
             combo.addView(tv);
 
+            //salva referencia aos checkBox e as barras em uma lista
             cb.add(checkBox);
             seekBars.add(dsb);
 
-
+            //adciona os layouts no layout pai
             rl.addView(combo);
             rl.addView(dsb);
 
@@ -151,7 +153,7 @@ public class PesoActivity extends AppCompatActivity {
         }
 
     }
-
+//metodo que segue para a proxima activity "listener do botao"
     public void next(View view) {
         boolean boxValues [] = new boolean[cb.size()];
         int aux=0;
